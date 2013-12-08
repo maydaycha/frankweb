@@ -19,6 +19,12 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 	
 
 	var now_classfication = 'hospital';
+	// 基隆市
+	$http.get('data/jilong.json').success(function(data){
+		$scope.jilongshis = data;
+		console.log("jilong~");
+		console.log($scope.jilongshis);
+	})
 	//台北市
 	$http.get('data/taibeishi.json').success(function(data){
 		$scope.taipeishis = data;
@@ -172,7 +178,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 	}
 	// 左邊地點清單
 	$scope.location_display = function(locationId){
-		var locationArray = [
+		var locationArray = [['jilong','基隆市'],
 		['taipei','台北市'],['newtaipei','新北市'],['taoyuan','桃園縣'],['xinzhuxian','新竹縣'],
 		['xinzhushi','新竹市'],['miaoli','苗栗縣'],['taichung','台中市'],['zhanghua','彰化縣'],
 		['yunlin','雲林縣'],['jiayi','嘉義縣'],['tainan','台南市'],['gaoxiong','高雄市'],
@@ -230,6 +236,9 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   		console.log("districtId: "+districtId);
   		console.log("locationNum: " + locationNum);
   		switch(locationNum){
+  			case '-1':
+  			cityName = $scope.jilongshis;
+  			break;
   			case '0': 
   			cityName = $scope.taipeishis; 
   			break;  

@@ -44,6 +44,12 @@
                     <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select>
                     <!-- {{depart.name}} -->
                 </div>
+                <p><button id="jilong-button" class="select-location" ng-click="location_display('jilong')">+基隆市</button></p>
+                <ul id="jilong" class="location-ul" >
+                    <li ng-repeat="jilongshi in jilongshis" id="{{jilongshi.english}}" ng-click="serchDistrict('{{jilongshi.english}}','-1','基隆市')">
+                        <button style="background:none; border:0;">{{jilongshi.chinese}}</button>
+                    </li>
+                </ul>
                 <p><button id="taipei-button" class="select-location" ng-click="location_display('taipei')">+台北市</button></p>
                 <ul id="taipei" class="location-ul" >
                     <li ng-repeat="taibeishi in taipeishis" id="{{taibeishi.english}}" ng-click="serchDistrict('{{taibeishi.english}}','0','台北市')">
