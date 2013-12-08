@@ -26,7 +26,6 @@ function initialize(classfication){
 // for controller to initial a map
 function after_select_init(){
 	geocoder = new google.maps.Geocoder();  
-	//var latlng = new google.maps.LatLng(24.078213, 120.537869);
 	var mapOptions = {
 		//center: latlng, 
 		zoom: 12,

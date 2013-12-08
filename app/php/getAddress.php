@@ -41,8 +41,8 @@ $result=array();
 $i = 0;
 while($result[$i++] = $db->fetch_array());
 //print_r($result);
- echo json_encode($result,JSON_UNESCAPED_UNICODE);	
-// echo json_encode($result);	
+ //echo json_encode($result,JSON_UNESCAPED_UNICODE);	
+echo json_encode($result);	
 
 	
 ?>

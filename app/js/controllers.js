@@ -478,10 +478,6 @@ $scope.search1 = function(){
 }
 
 $scope.goToMap = function(name,tele,lat,lng){
-	// console.log("GOTOMAPm name: " +name);
-	// console.log("GOTOMAPm tele: " +tele);
-	// console.log("GOTOMAPm lat: " +lat);
-	// console.log("GOTOMAPm lng: " +lng);
 	// $("#section_for_googlemap").css("display","block");
 	$("#section_for_article").css("display","none");
 	$("#left_block").css("visibility","block");
@@ -489,10 +485,12 @@ $scope.goToMap = function(name,tele,lat,lng){
 	// $("#section_for_hospitalList").css("display",'none');
 	$("#searchList").css("display",'block');
 	var map = after_select_init();
-	addMarker(map,name,lat,lng,lng,1);
+	removeMarkers();
+	addMarker(map,name,lat,lng,lng,0);
 	initialLocation = new google.maps.LatLng(lat,lng);
 	console.log("initialLocation: " + initialLocation);
 	map.setCenter(initialLocation);
+	clusterMarkers(50,15);
 }
 
 
@@ -511,13 +509,14 @@ $scope.change_to_googlemap = function(){
 	$("#fourArticle").css("display",'block');
 	$("#section_for_hospitalList").css("visibility",'visible');
 }
-// $scope.change_to_searchResult = function(){
-// 	$("#section_for_googlemap").css("display","none");
-// 	$("#section_for_article").css("display","none");
-// 	$("#left_block").css("visibility","visible");
-// 	$("#fourArticle").css("display",'block');
-// 	$("#section_for_hospitalList").css("display",'block');
-// }
+
+/*$scope.change_to_searchResult = function(){
+	$("#section_for_googlemap").css("display","none");
+	$("#section_for_article").css("display","none");
+	$("#left_block").css("visibility","visible");
+	$("#fourArticle").css("display",'block');
+	$("#section_for_hospitalList").css("display",'block');
+}*/
 
 
 function navigate_to_mp(){
