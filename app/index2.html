@@ -31,7 +31,7 @@
         <div class="background lside">
         </div>
         <div class="left_block lside" id="left_block">
-            <div class="content">
+            <div class="left_block_content">
                 <table border="1" style="margin-left:10px;">
                     <th class="select-location-class-hospital">
                         <button id="hospital-button" class="select-location-class" ng-click="change_seach_condition('hospital')">醫院</button>
@@ -166,7 +166,7 @@
             <div class="background rside">
             </div>
             <div class="right_block rside" id="section_for_hospitalList">
-                <div class="content" id="searchResult">
+                <div class="right_block_content" id="searchResult">
                     <h3 id="resultCount" style="display:none;">搜尋結果 (共: {{count}}筆)</h3>
                     <ul ng-repeat="a in list track by $index">
                         <li>{{$index+1}}. 名稱: {{a.name}}</li>

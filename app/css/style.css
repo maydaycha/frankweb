@@ -60,14 +60,39 @@
  	}
 
  	.left_block {
+
  		display: block;
  		float: left; 
- 		/*overflow: scroll;*/
+ 		overflow: hidden;
+ 	}
+ 	.left_block_content{
+ 		position: absolute;
+			left: 0;
+			top: 100px;
+			right: -30px;
+			bottom: 0;	
+			padding-right: 15px;
+			overflow-y: scroll;
+
  	}
 
  	.right_block {
+ 		position: relative;
  		display: block;
  		float: right; 
+ 		overflow: hidden;
+ 		margin-right: 10px;
+ 	}
+
+ 	.right_block_content{
+ 		position: absolute;
+			left: 0;
+			top: 0;
+			right: -30px;
+			bottom: 0;	
+			padding-left: 15px;
+			overflow-y: scroll;
+			margin-right: 15px;
  	}
 
  	.center_block {
@@ -155,7 +180,7 @@
  		height: 500px;
  		width: 180px;
  		padding-bottom: 50px;
- 		overflow: scroll
+ 		overflow: hidden;
  	}
 
  	.background.rside {
@@ -173,6 +198,7 @@
  		height: 500px;
  		width: 200px;
  		padding-bottom: 50px;
+ 		overflow: hidden;
  	}
 
  	.background.main {
@@ -311,7 +337,7 @@
 }
 
 #section_for_hospitalList{
-	overflow: scroll;
+	/*overflow: scroll;*/
 }
 
 #searchResult ul{
