@@ -5,10 +5,6 @@
 angular.module('myApp.controllers', []).
 controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window) {
 
-	// $("#section_for_googlemap").css("display","block");
-	// $("#section_for_article").css("display","none");
-	// // $("#section_for_hospitalList").css("display","none");
-	// $("#left_block").css("visibility","visible");
 	$scope.district = "";
 	$scope.departs = [
 	{'name':'不分科'},
@@ -207,6 +203,8 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 		$scope.city = getInitialCity();
 		$scope.igetInitialCity
 		initialize(classfication);
+		removeMarkers();
+
 		if(classfication=="hospital"){
 			$(".select-location-class-hospital").css("background-color","#9B9797");
 			$(".select-location-class-clinic").css("background-color","#ffffff");
@@ -215,8 +213,8 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 		else{
 			$(".select-location-class-hospital").css("background-color","#ffffff");
 			$(".select-location-class-clinic").css("background-color","#9B9797");
-			now_classfication = "clinic";
 			$("#selectDepart").css('display', 'block');
+			now_classfication = "clinic";
 		}
 
 
@@ -333,6 +331,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
+  				clusterMarkers(50, 15);
   				initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
   				console.log("initialLocation: " + initialLocation);
   				map.setCenter(initialLocation);
@@ -381,6 +380,8 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   				alert("抱歉！找不到您要的選擇，請換地區或是科別");
   			}
   			else{
+  				
+  				removeMarkers();
   				for( var i=0; i<data.length; i++){
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
@@ -392,6 +393,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   				console.log("initialLocation: " + initialLocation);
 
   				map.setCenter(initialLocation);
+  				clusterMarkers(50, 15);
   			}
   		}).
   		error(function(){

@@ -1,25 +1,25 @@
 
-var map, geocoder,_lat,_lng,countMarker=0;
+// -----------Golbal variable-----------
+var map, geocoder,_lat,_lng;
 var marker={},info={}; 
 var taipei = new google.maps.LatLng(25.0366641,121.5499766);
 var global_district;
+var markerCluster;
+// -----------Golbal variable-----------
 //$(document).ready(function() { initialize(); });
 window.onload=initialize();
 function initialize(classfication){ 
-	var type = 'hospital';
+	var type;
 	geocoder = new google.maps.Geocoder();  
-	//var latlng = new google.maps.LatLng(24.078213, 120.537869);
 	var mapOptions = {
-		//center: latlng, 
 		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
-	if(classfication=='clinic'){
+	if(classfication=='clinic')
 		type='clinic';
-	}
-	else{
-	}
+	else
+		type="hospital";
 	getCurrentPosition(true,type);
 }
 
@@ -84,7 +84,7 @@ function addMarker(map,locationName,lat,lng,tele,count){
 	console.log("addMarker");
 	var latlng = new google.maps.LatLng(lat,lng);
 	marker[count] = new google.maps.Marker({
-		map:map,
+		// map:map,
 		position:latlng,
 		title: locationName
 	});
@@ -124,9 +124,15 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			data: obj,
 			success: function(data) {
 				// console.log(data);
+				removeMarkers();
+				// unsetCluster(markerCluster);
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
+				clusterMarkers(30, 13);
+				// clustering markers
+				// var mcOptions = {gridSize: 30, maxZoom: 13};
+				// var markerCluster = new MarkerClusterer(map, marker, mcOptions);
 				global_district = data[0]['district'];
 				global_city = data[0]['city'];
 				console.log("initial~ district: " + global_district);
@@ -136,6 +142,20 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				alert("ajax error");
 			} 
 		});
+	}
+
+	function clusterMarkers(gridsize, zoom){
+		var mcOptions = {gridSize: gridsize, maxZoom: zoom};
+		markerCluster = new MarkerClusterer(map, marker, mcOptions);
+	}
+
+	function removeMarkers(){
+		for(var i=0; i< Object.size(marker); i++)
+			marker[i].setMap(null);
+		marker = [];
+	}
+	function unsetCluster(){
+		markerCluster.clearMarkers();
 	}
 
 
