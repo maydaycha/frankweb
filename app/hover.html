@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>【梅問題教學網】 CSS觸碰式下拉式選單</title>
+<style type="text/css">
+/* 整體設置*/ 
+.navigation {
+	margin:0; 
+	padding:0;
+	width:610px;
+	list-style-type:none; 
+	font:12px Arial; 
+	}
+ 
+.navigation li {
+	float:left; 
+    padding:0; 
+	margin:0 10px 0 0; 
+	_margin:0 2px 0 0; 
+	width:150px;
+	}
+ 
+/* 設置選單區塊*/
+.navigation li dl { 
+	width:150px;/*ie6*/
+    margin:0; 
+	padding:0;
+	background-color:#fff;
+	border:solid 2px #666; 
+	}
+ 
+.navigation li dt a , .navigation li dd a{ display:block;}
+ 
+ 
+/* 設置主選單dt */
+.navigation li dt {
+	margin:0;
+	padding: 5px;
+	text-align:center;
+	background-color:#fff;	
+	font-size: 12px;
+	font-weight: bold;
+	height:15px;
+	overflow:hidden;
+	}
+ 
+.navigation li dt a ,.navigation  li dt a:visited {
+	display:block; 
+    color:#333;
+    text-decoration:none;
+	}
+ 
+/* 設置子選單dd */
+.navigation li dd { 
+	margin:0; 
+    padding:0; 
+	color: #333; 
+	background-color:#efefef;
+	border-bottom:dotted 1px #666;
+	}
+ 
+.navigation li dd.last {
+	border-bottom:0;
+	}	
+ 
+.navigation li dd a, .navigation  li dd a:visited {
+	display:block; 
+	color:#333; 
+    text-decoration:none; 
+	padding:4px 5px 4px 20px;
+    }
+ 
+ 
+/*隱藏子選單*/
+.navigation li dd { display:none;}
+ 
+ 
+/* 滑鼠滑入顯示子選單 */
+.navigation li:hover dd, .navigation li a:hover dd { display:block;}
+ 
+/*ie6 hack*/
+.navigation li:hover,.navigation li a:hover { border:0;}
+.navigation table { border-collapse:collapse; 
+    padding:0; 		
+	text-align:left;
+	}
+ 
+</style>
+</head>
+ 
+<body>
+<ul class="navigation">
+	<li>  
+    <!--[if lte IE 6]><a href="#"><table><tr><td><![endif]-->  
+    	<dl>
+			<dt><a href="#">PC電腦不求人</a></dt>
+			<dd><a href="#">系統</a></dd>
+			<dd><a href="#">網路</a></dd>
+			<dd><a href="#">USB</a></dd>
+			<dd class="last"><a href="#">防毒</a></dd>
+		</dl>
+    <!--[if lte IE 6]></td></tr></table></a><![endif]-->    
+    </li> 
+    <li>
+    <!--[if lte IE 6]><a href="#"><table><tr><td><![endif]-->  
+        <dl>
+			<dt><a href="#">Photoshop</a></dt>
+			<dd><a href="#">疑難雜症</a></dd>
+			<dd class="last"><a href="#">實用範例</a></dd>			
+		</dl>
+     </li>
+     <!--[if lte IE 6]></td></tr></table></a><![endif]--> 
+     <li>
+     <!--[if lte IE 6]><a href="#"><table><tr><td><![endif]-->  
+        <dl>
+			<dt><a href="#">css</a></dt>
+			<dd><a href="#">實用案例</a></dd>
+			<dd class="last"><a href="#">輔助工具</a></dd>
+		</dl>
+    <!--[if lte IE 6]></td></tr></table></a><![endif]-->     			
+    </li>
+</ul>
+</body>
+</html>
