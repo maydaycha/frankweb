@@ -331,16 +331,18 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   			data: dataJson,
   			headers: {'Content-type': 'application/x-www-form-urlencoded'}
   		}).success(function(data){	
-  			console.log("data: " +data);
+  			console.log(data);
   			if(data[0]==false){
   				alert("抱歉！找不到您要的選擇，請換地區或是科別");
   			}
   			else{
+  				removeMarkers();
+				unsetCluster();
   				for( var i=0; i<data.length; i++){
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
-  				clusterMarkers(50, 15);
+  				clusterMarkers(map,50, 15);
   				initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
   				console.log("initialLocation: " + initialLocation);
   				map.setCenter(initialLocation);
@@ -402,7 +404,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   				console.log("initialLocation: " + initialLocation);
 
   				map.setCenter(initialLocation);
-  				clusterMarkers(50, 15);
+  				clusterMarkers(map,50, 15);
   			}
   		}).
   		error(function(){
@@ -499,7 +501,7 @@ $scope.goToMap = function(name,tele,lat,lng){
 	initialLocation = new google.maps.LatLng(lat,lng);
 	console.log("initialLocation: " + initialLocation);
 	map.setCenter(initialLocation);
-	clusterMarkers(50,15);
+	clusterMarkers(map,50,15);
 }
 
 

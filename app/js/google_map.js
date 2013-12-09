@@ -5,9 +5,11 @@ var marker={},info={};
 var taipei = new google.maps.LatLng(25.0366641,121.5499766);
 var global_district;
 var markerCluster;
+var isfirst = true;
 // -----------Golbal variable-----------
-//$(document).ready(function() { initialize(); });
-window.onload=initialize();
+// $(document).ready(function() { initialize(); });
+window.onload=initialize('hospital');
+
 function initialize(classfication){ 
 	var type;
 	geocoder = new google.maps.Geocoder();  
@@ -40,9 +42,12 @@ function getCurrentPosition(init,type){
 	if(navigator.geolocation) {
 		browserSupportFlag = true;
 		navigator.geolocation.getCurrentPosition(function(position) {
-			_lat=position.coords.latitude;
-			_lng=position.coords.longitude;
-			initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+			// _lat=position.coords.latitude;
+			// _lng=position.coords.longitude;
+			_lat = 25.128531;
+			_lng = 121.751905;
+
+			initialLocation = new google.maps.LatLng(_lat,_lng);
 			map.setCenter(initialLocation);
 			console.log('getCUrrrentPosition');
 			console.log("initial lat: " +_lat);
@@ -124,14 +129,14 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			success: function(data) {
 				// console.log(data);
 				removeMarkers();
-				// unsetCluster(markerCluster);
+				if(!isfirst){
+					unsetCluster();
+					isfirst = false;
+				}
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
-				clusterMarkers(30, 13);
-				// clustering markers
-				// var mcOptions = {gridSize: 30, maxZoom: 13};
-				// var markerCluster = new MarkerClusterer(map, marker, mcOptions);
+				clusterMarkers(map,50, 15);
 				global_district = data[0]['district'];
 				global_city = data[0]['city'];
 				console.log("initial~ district: " + global_district);
@@ -143,10 +148,6 @@ function addMarker(map,locationName,lat,lng,tele,count){
 		});
 	}
 
-	function clusterMarkers(gridsize, zoom){
-		var mcOptions = {gridSize: gridsize, maxZoom: zoom};
-		markerCluster = new MarkerClusterer(map, marker, mcOptions);
-	}
 
 	function removeMarkers(){
 		for(var i=0; i< Object.size(marker); i++)
@@ -156,8 +157,10 @@ function addMarker(map,locationName,lat,lng,tele,count){
 	function unsetCluster(){
 		markerCluster.clearMarkers();
 	}
-
-
+	function clusterMarkers(map,gridsize, zoom){
+		var mcOptions = {gridSize: gridsize, maxZoom: zoom};
+		markerCluster = new MarkerClusterer(map, marker, mcOptions);
+	}
 	function getInitialDistrict(){
 		return global_district;
 	}

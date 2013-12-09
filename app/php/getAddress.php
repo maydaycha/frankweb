@@ -1,5 +1,4 @@
 <?php
-// ini_set("display_errors", "On");
 require_once("DB_config.php");
 require_once("DB_class.php");
 header("Content-Type:text/html; charset=utf-8");
@@ -9,8 +8,6 @@ $lng = $_POST["lng"];
 // $lng = 121.751905;
 $class = $_POST["class"];
 // $class = 'clinic';
-// $lat =  24.789071;
-// $lng =  120.9996451;
 
 $url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&sensor=false&language=zh-tw';
 $get = file_get_contents($url);

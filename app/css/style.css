@@ -60,20 +60,19 @@
  	}
 
  	.left_block {
-
  		display: block;
  		float: left; 
  		overflow: hidden;
  	}
  	.left_block_content{
  		position: absolute;
-			left: 0;
-			top: 100px;
-			right: -30px;
-			bottom: 0;	
-			padding-right: 15px;
-			overflow-y: scroll;
-
+ 		left: 0;
+ 		top: 100px;
+ 		right: -30px;
+ 		bottom: 0;	
+ 		padding-right: 15px;
+ 		overflow-y: scroll;
+ 		height: 500px;
  	}
 
  	.right_block {
@@ -86,13 +85,13 @@
 
  	.right_block_content{
  		position: absolute;
-			left: 0;
-			top: 0;
-			right: -30px;
-			bottom: 0;	
-			padding-left: 15px;
-			overflow-y: scroll;
-			margin-right: 15px;
+ 		left: 0;
+ 		top: 0;
+ 		right: -30px;
+ 		bottom: 0;	
+ 		padding-left: 15px;
+ 		overflow-y: scroll;
+ 		margin-right: 15px;
  	}
 
  	.center_block {
