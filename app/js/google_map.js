@@ -42,10 +42,11 @@ function getCurrentPosition(init,type){
 	if(navigator.geolocation) {
 		browserSupportFlag = true;
 		navigator.geolocation.getCurrentPosition(function(position) {
-			// _lat=position.coords.latitude;
-			// _lng=position.coords.longitude;
-			_lat = 25.128531;
-			_lng = 121.751905;
+			_lat=position.coords.latitude;
+			_lng=position.coords.longitude;
+			// 基隆
+			// _lat = 25.128531;
+			// _lng = 121.751905;
 
 			initialLocation = new google.maps.LatLng(_lat,_lng);
 			map.setCenter(initialLocation);

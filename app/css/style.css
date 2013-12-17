@@ -351,3 +351,86 @@
 .tab{
 	padding-left: 13px;
 }
+
+
+.item_type{
+	position:relative;
+	/*background: url(../img/mapbgterm1) 10px 0px no-repeat;*/
+	/*padding-left: 50px;*/
+	/*width: 40px;*/
+	height: 27px;
+	margin-left: 10px;
+	/*padding-bottom: 100px;*/
+	list-style-type: none;
+}
+.item_area{
+	background: url(../img/mapbgterm1) -20px -7px no-repeat;
+	/*width:60px;*/
+	height:27px;
+	float: left;
+	/*overflow: hidden;*/
+	margin-top: 7px;
+	padding-left: 10px;
+	/*margin-right: 10px;*/
+	/*list-style: none outside none;*/
+}
+
+/* Tabs */
+.abgne_tab {
+	clear: left;
+	width: 400px;
+	margin: 10px 0;
+}
+ul.tabs {
+	width: 100%;
+	height: 32px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	margin-left: -18px;
+	/*padding-bottom: 10px;*/
+	margin-bottom: -10px;
+}
+ul.tabs li {
+	float: left;
+	height: 31px;
+	line-height: 31px;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: -1px;	 /*讓 li 往下移來遮住 ul 的部份 border-bottom */
+	border: 1px solid #999;
+	border-left: none;
+	background: #e1e1e1;
+}
+ul.tabs li a {
+	display: block;
+	padding: 0 20px;
+	color: #000;
+	border: 1px solid #fff;
+	text-decoration: none;
+}
+ul.tabs li a:hover {
+	background: #ccc;
+}
+ul.tabs li.active  {
+	background: #fff;
+	border-bottom: 1px solid#fff;
+}
+ul.tabs li.active a:hover {
+	background: #fff;
+}
+div.tab_container {
+	clear: left;
+	width: 40%;
+	border: 1px solid #999;
+	border-top: none;
+	background: #fff;
+	margin-left: 7px;
+}
+div.tab_container .tab_content {
+	padding: 20px;
+}
+div.tab_container .tab_content h2 {
+	margin: 0 0 20px;
+}
+
+
