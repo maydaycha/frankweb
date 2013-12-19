@@ -90,6 +90,9 @@
  		width:11%;
  		/*border-bottom: 1px solid;*/
  	}
+ 	.left_block_content2 p{
+ 		margin-left: 10px;
+ 	}
 
  	.right_block {
  		position: relative;
