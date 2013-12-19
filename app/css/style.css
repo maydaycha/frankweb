@@ -72,7 +72,24 @@
  		bottom: 0;	
  		padding-right: 15px;
  		overflow-y: scroll;
- 		height: 500px;
+ 		height: 300px;
+ 		width:40%;
+ 		border-bottom: 1px solid;
+
+ 	}
+
+ 	.left_block_content2{
+ 		position: absolute;
+ 		left: 0;
+ 		top: 420px;
+ 		right: -30px;
+ 		bottom: 400px;	
+ 		padding-right: 15px;
+ 		overflow-y: scroll;
+ 		height: 300px;
+ 		width:40%;
+ 		border-bottom: 1px solid;
+
  	}
 
  	.right_block {
@@ -241,9 +258,11 @@
 
  	.select-location{
  		margin-left: 20px;
+ 		margin-top: 20px;
  		background:none; 
  		border:0px; 
  		color: #9B9797;
+ 		float: left;
  	}
 
  	.select-location-class{
@@ -268,6 +287,25 @@
 
  	.location-ul{
  		display:none;
+ 		margin-top: 30px;
+ 		list-style-type: none;
+ 	}
+
+ 	.location-ul > li{ 
+ 		float: left;
+ 		padding-right: 10px;
+ 		margin-left: -10px;
+ 		margin-top: 10px;
+
+ 	}
+ 	.location-ul > p{
+ 		font-weight: bold;
+ 		/*padding-left: 20px;*/
+ 	}
+
+ 	.location-ul > p > button{
+ 		margin-left: 10px;
+ 		/*padding-left: 10px;*/
  	}
 
  	.article-title{
@@ -381,6 +419,10 @@
 	width: 400px;
 	margin: 10px 0;
 }
+.tabs{
+	/*position: fixed;*/
+	/*margin-top: -12px;*/
+}
 ul.tabs {
 	width: 100%;
 	height: 32px;
@@ -398,7 +440,8 @@ ul.tabs li {
 	position: relative;
 	margin-bottom: -1px;	 /*讓 li 往下移來遮住 ul 的部份 border-bottom */
 	border: 1px solid #999;
-	border-left: none;
+	/*border-left: none;*/
+	border-left: 1px solid #999;
 	background: #e1e1e1;
 }
 ul.tabs li a {
@@ -421,7 +464,7 @@ ul.tabs li.active a:hover {
 div.tab_container {
 	clear: left;
 	width: 43%;
-	border: 1px solid #999;
+	/*border: 1px solid #999;*/
 	border-top: none;
 	background: #fff;
 	margin-left: 2px;
@@ -434,3 +477,6 @@ div.tab_container .tab_content h2 {
 }
 
 
+#test1{
+	/* display: none; */
+}

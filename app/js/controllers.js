@@ -16,6 +16,14 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 	];
 	$scope.depart = $scope.departs[0];
 	$scope.afterserchDistrict = false;
+
+	var __locationArray = [['jilong','基隆市'],
+	['taipei','台北市'],['newtaipei','新北市'],['taoyuan','桃園縣'],['xinzhuxian','新竹縣'],
+	['xinzhushi','新竹市'],['miaoli','苗栗縣'],['taichung','台中市'],['zhanghua','彰化縣'],
+	['yunlin','雲林縣'],['jiayi','嘉義縣'],['tainan','台南市'],['gaoxiong','高雄市'],
+	['pingdong','屏東縣'],['yilan','宜蘭縣'],['hualian','花蓮縣'],['taidong','台東縣'],
+	['penghu','澎湖縣'],['jinmen','金門縣'],['lianjiang','連江縣']
+	];
 	
 
 	var now_classfication = 'hospital';
@@ -178,29 +186,37 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 	}
 	// 左邊地點清單
 	$scope.location_display = function(locationId){
-		var locationArray = [['jilong','基隆市'],
-		['taipei','台北市'],['newtaipei','新北市'],['taoyuan','桃園縣'],['xinzhuxian','新竹縣'],
-		['xinzhushi','新竹市'],['miaoli','苗栗縣'],['taichung','台中市'],['zhanghua','彰化縣'],
-		['yunlin','雲林縣'],['jiayi','嘉義縣'],['tainan','台南市'],['gaoxiong','高雄市'],
-		['pingdong','屏東縣'],['yilan','宜蘭縣'],['hualian','花蓮縣'],['taidong','台東縣'],
-		['penghu','澎湖縣'],['jinmen','金門縣'],['lianjiang','連江縣']
-		];
 		console.log(locationId);
 		var j = -1;
-		for(var i=0;i<locationArray.length; i++){
-			if(locationId==locationArray[i][0]){
+		for(var i=0;i<__locationArray.length; i++){
+			if(locationId==__locationArray[i][0]){
 				j=i;
 				break;
 			}
 		}
-		if($("#"+locationId).css("display")!="none"){
-			$("#"+locationId).css("display","none");
-			$("#"+locationArray[j][0]+"-button").html("+"+locationArray[j][1]);
-		}
-		else{
+		for(i=0; i<__locationArray.length ; i++)
+			if(__locationArray[i][0]!=locationId)
+				$("#button"+i).css("display", "none");
+			else
+				$("#button"+i).css("display", "block");
+		// if($("#"+locationId).css("display")!="none"){
+			// $("#"+locationId).css("display","none");
+			// $("#"+locationArray[j][0]+"-button").html("+"+locationArray[j][1]);
+		// }
+		// else{
 			$("#"+locationId).css("display","block");
-			$("#"+locationArray[j][0]+"-button").html("-"+locationArray[j][1]);
-		}
+			// $("#"+locationArray[j][0]+"-button").html("-"+locationArray[j][1]);
+		// }
+		$("#tab_container1").css("display", "none");
+		$("#tab_container2").css("display", "block");
+	}
+
+	$scope.return_to_city = function(){
+		for(var i=0; i<__locationArray.length ; i++)
+			$("#"+__locationArray[i][0]).css("display", "none");
+
+		$("#tab_container1").css("display", "block");
+		$("#tab_container2").css("display", "none");
 	}
 
 	$scope.change_seach_condition = function(classfication){
@@ -215,13 +231,22 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 			$(".select-location-class-hospital").css("background-color","#9B9797");
 			$(".select-location-class-clinic").css("background-color","#ffffff");
 			now_classfication = "hospital";
+			$("#hospital").addClass("active");
+			$("#clinic").removeClass("active");
 		}
 		else{
 			$(".select-location-class-hospital").css("background-color","#ffffff");
 			$(".select-location-class-clinic").css("background-color","#9B9797");
-			$("#selectDepart").css('display', 'block');
 			now_classfication = "clinic";
+			$("#hospital").removeClass("active");
+			$("#clinic").addClass("active");
 		}
+
+		for(var i=0; i<__locationArray.length ; i++)
+			$("#"+__locationArray[i][0]).css("display", "none");
+
+		$("#tab_container1").css("display", "block");
+		$("#tab_container2").css("display", "none");
 
 
 	}
@@ -337,7 +362,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   			}
   			else{
   				removeMarkers();
-				unsetCluster();
+  				unsetCluster();
   				for( var i=0; i<data.length; i++){
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);

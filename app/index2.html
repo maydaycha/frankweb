@@ -33,12 +33,12 @@
         <div class="left_block lside" id="left_block">
             <div class="left_block_content">
                 <div class="abgne_tab">
-                    <ul class="tabs">
-                        <li class="active"><a href="">醫院</a></li>
-                        <li class=""><a href="">診所</a></li>
+                    <ul class="tabs" >
+                        <li class="active" id="hospital"><a href="" ng-click="change_seach_condition('hospital')">醫院</a></li>
+                        <li class="" id="clinic"><a href="" ng-click="change_seach_condition('clinic')">診所</a></li>
                     </ul>
 
-                    <div class="tab_container">
+                    <div class="tab_container" id="tab_container1">
                         <!-- <table border="1" style="margin-left:10px;">
                             <th class="select-location-class-hospital">
                                 <button id="hospital-button" class="select-location-class" ng-click="change_seach_condition('hospital')">醫院</button>
@@ -49,125 +49,168 @@
                         </table> -->
                         <div class="selectDepart" id="selectDepart" ng-model="depart">
                             <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select>
-                            <!-- {{depart.name}} -->
                         </div>
                         <p><button id="jilong-button" class="select-location" ng-click="location_display('jilong')">+基隆市</button></p>
+                        <p><button id="taipei-button" class="select-location" ng-click="location_display('taipei')">+台北市</button></p>
+
+                        <p><button id="newtaipei-button" class="select-location" ng-click="location_display('newtaipei')">+新北市</button></p>
+
+                        <p><button id="taoyuan-button" class="select-location" ng-click="location_display('taoyuan')">+桃園縣</button></p>
+
+                        <p><button id="xinzhuxian-button" class="select-location" ng-click="location_display('xinzhuxian')">+新竹縣</button></p>
+                        
+                        <p><button id="xinzhushi-button" class="select-location" ng-click="location_display('xinzhushi')">+新竹市</button></p>
+
+                        <p><button id="miaoli-button" class="select-location" ng-click="location_display('miaoli')">+苗栗縣</button></p>
+
+                        <p><button id="taichung-button" class="select-location" ng-click="location_display('taichung')">+台中市</button></p>
+
+                        <p><button id="zhanghua-button" class="select-location" ng-click="location_display('zhanghua')">+彰化縣</button></p>
+
+                        <p><button id="yunlin-button" class="select-location" ng-click="location_display('yunlin')">+雲林縣</button></p>
+
+                        <p><button id="jiayi-button" class="select-location" ng-click="location_display('jiayi')">+嘉義縣</button></p>
+
+                        <p><button id="tainan-button" class="select-location" ng-click="location_display('tainan')">+台南市</button></p>
+
+                        <p><button id="gaoxiong-button" class="select-location" ng-click="location_display('gaoxiong')">+高雄市</button></p>
+
+                        <p><button id="pingdong-button" class="select-location" ng-click="location_display('pingdong')">+屏東縣</button></p>
+
+                        <p><button id="yilan-button" class="select-location" ng-click="location_display('yilan')">+宜蘭縣</button></p>
+
+                        <p><button id="hualian-button" class="select-location" ng-click="location_display('hualian')">+花蓮縣</button></p>
+
+                        <p><button id="taidong-button" class="select-location" ng-click="location_display('taidong')">+臺東縣</button></p>
+                        
+                        <p><button id="penghu-button" class="select-location" ng-click="location_display('penghu')">+澎湖縣</button></p>
+                        
+                        <p><button id="jinmen-button" class="select-location" ng-click="location_display('jinmen')">+金門縣</button></p>
+
+                        <p><button id="lianjiang-button" class="select-location" ng-click="location_display('lianjiang')">+連江縣</button></p>
+
+                    </div> 
+                    <div class="tab_container" id="tab_container2">
                         <ul id="jilong" class="location-ul" >
+                            <p id="button0">基隆市 <button ng-click="return_to_city()">x</button></p>
                             <li ng-repeat="jilongshi in jilongshis" id="{{jilongshi.english}}" ng-click="serchDistrict('{{jilongshi.english}}','-1','基隆市')">
                                 <button style="background:none; border:0;">{{jilongshi.chinese}}</button>
                             </li>
                         </ul>
-                        <p><button id="taipei-button" class="select-location" ng-click="location_display('taipei')">+台北市</button></p>
                         <ul id="taipei" class="location-ul" >
+                            <p id="button1">台北市 <button ng-click="return_to_city()">x</button></p>
                             <li ng-repeat="taibeishi in taipeishis" id="{{taibeishi.english}}" ng-click="serchDistrict('{{taibeishi.english}}','0','台北市')">
                                 <button style="background:none; border:0;">{{taibeishi.chinese}}</button>
                             </li>
                         </ul>
-                        <p><button id="newtaipei-button" class="select-location" ng-click="location_display('newtaipei')">+新北市</button></p>
                         <ul id="newtaipei" class="location-ul">
+                            <p id="button2" >新北市 <button ng-click="return_to_city()">x</button></p>
                             <li ng-repeat="xinbeishi in xinbeishis" id="{{xinbeishi.english}}" ng-click="serchDistrict('{{xinbeishi.english}}','1','新北市')">
                                 <button style="background:none; border:0;">{{xinbeishi.chinese}}</button>
                             </li>
                         </ul>
-                        <p><button id="taoyuan-button" class="select-location" ng-click="location_display('taoyuan')">+桃園縣</button></p>
                         <ul id="taoyuan" class="location-ul">
+                            <p id="button3" >桃園市 <button ng-click="return_to_city()">x</button></p>
                             <li ng-repeat="taoyuan in taoyuans" id="{{taoyuan.english}}" ng-click="serchDistrict('{{taoyuan.english}}','2','桃園縣')">
                                 <button style="background:none; border:0;">{{taoyuan.chinese}}</button>
                             </li>
                         </ul>
-                        <p><button id="xinzhuxian-button" class="select-location" ng-click="location_display('xinzhuxian')">+新竹縣</button></p>
                         <ul id="xinzhuxian" class="location-ul">
+                            <p id="button4">新竹縣 <button ng-click="return_to_city()">x</button></p>
                             <li ng-repeat="xinzhuxian in xinzhuxians" id="{{xinzhuxian.english}}" ng-click="serchDistrict('{{xinzhuxian.english}}','3','新竹縣')">
                                 <button style="background:none; border:0;">{{xinzhuxian.chinese}}</button></li>
                             </ul>
-                            <p><button id="xinzhushi-button" class="select-location" ng-click="location_display('xinzhushi')">+新竹市</button></p>
                             <ul id="xinzhushi" class="location-ul">
+                                <p id="button5">新竹市 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="xinzhushi in xinzhushis" id="{{xinzhushi.english}}" ng-click="serchDistrict('{{xinzhushi.english}}','4','新竹市')">
                                     <button style="background:none; border:0;">{{xinzhushi.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="miaoli-button" class="select-location" ng-click="location_display('miaoli')">+苗栗縣</button></p>
                             <ul id="miaoli" class="location-ul">
+                                <p id="button6">苗栗縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="miaoli in miaolis" id="{{miaoli.english}}" ng-click="serchDistrict('{{miaoli.english}}','5','苗栗縣')">
                                     <button style="background:none; border:0;">{{miaoli.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="taichung-button" class="select-location" ng-click="location_display('taichung')">+台中市</button></p>
                             <ul id="taichung" class="location-ul">
+                                <p id="button7">臺中市 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="taizhongshi in taizhongshis" id="{{taizhongshi.english}}" ng-click="serchDistrict('{{taizhongshi.english}}','6','臺中市')">
                                     <button style="background:none; border:0;">{{taizhongshi.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="zhanghua-button" class="select-location" ng-click="location_display('zhanghua')">+彰化縣</button></p>
                             <ul id="zhanghua" class="location-ul">
+                                <p id="button8">彰化縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="zhanghua in zhanghuas" id="{{zhanghua.english}}" ng-click="serchDistrict('{{zhanghua.english}}','7','彰化縣')">
                                     <button style="background:none; border:0;">{{zhanghua.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="yunlin-button" class="select-location" ng-click="location_display('yunlin')">+雲林縣</button></p>
                             <ul id="yunlin" class="location-ul">
+                                <p id="button9">雲林縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="yunlin in yunlins" id="{{yunlin.english}}" ng-click="serchDistrict('{{yunlin.english}}','8','雲林縣')">
                                     <button style="background:none; border:0;">{{yunlin.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="jiayi-button" class="select-location" ng-click="location_display('jiayi')">+嘉義縣</button></p>
                             <ul id="jiayi" class="location-ul">
+                                <p id="button10">嘉義縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="jiayi in jiayis" id="{{jiayi.english}}" ng-click="serchDistrict('{{jiayi.english}}','9','嘉義縣')">
                                     <button style="background:none; border:0;">{{jiayi.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="tainan-button" class="select-location" ng-click="location_display('tainan')">+台南市</button></p>
                             <ul id="tainan" class="location-ul">
+                                <p id="button11">台南市 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="tainan in tainans" id="{{tainan.english}}" ng-click="serchDistrict('{{tainan.english}}','10','台南市')"><button style="background:none; border:0;">{{tainan.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="gaoxiong-button" class="select-location" ng-click="location_display('gaoxiong')">+高雄市</button></p>
                             <ul id="gaoxiong" class="location-ul">
+                                <p id="button12">高雄市 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="gaoxiong in gaoxiongs" id="{{gaoxiong.english}}" ng-click="serchDistrict('{{gaoxiong.english}}','11','高雄市')">
                                     <button style="background:none; border:0;">{{gaoxiong.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="pingdong-button" class="select-location" ng-click="location_display('pingdong')">+屏東縣</button></p>
                             <ul id="pingdong" class="location-ul">
+                                <p id="button13">屏東縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="pingdong in pingdongs" id="{{pingdong.english}}" ng-click="serchDistrict('{{pingdong.english}}','12','屏東縣')">
                                     <button style="background:none; border:0;">{{pingdong.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="yilan-button" class="select-location" ng-click="location_display('yilan')">+宜蘭縣</button></p>
                             <ul id="yilan" class="location-ul">
+                                <p id="button14">宜蘭縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="yilan in yilans" id="{{yilan.english}}" ng-click="serchDistrict('{{yilan.english}}','13','宜蘭縣')">
                                     <button style="background:none; border:0;">{{yilan.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="hualian-button" class="select-location" ng-click="location_display('hualian')">+花蓮縣</button></p>
                             <ul id="hualian" class="location-ul">
+                                <p id="button15">花蓮縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="hualian in hualians" id="{{hualian.english}}" ng-click="serchDistrict('{{hualian.english}}','14','花蓮縣')">
                                     <button style="background:none; border:0;">{{hualian.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="taidong-button" class="select-location" ng-click="location_display('taidong')">+臺東縣</button></p>
                             <ul id="taidong" class="location-ul">
+                                <p id="button16">臺東縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="taidong in taidongs" id="{{taidong.english}}" ng-click="serchDistrict('{{taidong.english}}','15','臺東縣')"><button style="background:none; border:0;">{{taidong.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="penghu-button" class="select-location" ng-click="location_display('penghu')">+澎湖縣</button></p>
                             <ul id="penghu" class="location-ul">
+                                <p id="button17">澎湖縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="penghu in penghus" id="{{penghu.english}}" ng-click="serchDistrict('{{penghu.english}}','16','澎湖縣')"><button style="background:none; border:0;">{{penghu.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="jinmen-button" class="select-location" ng-click="location_display('jinmen')">+金門縣</button></p>
                             <ul id="jinmen" class="location-ul">
+                                <p id="button18">金門縣 <button ng-click="return_to_city()">x</button></p>  
                                 <li ng-repeat="jinmen in jinmens" id="{{jinmen.english}}" ng-click="serchDistrict('{{jinmen.english}}','17','金門縣')"><button style="background:none; border:0;">{{jinmen.chinese}}</button>
                                 </li>
                             </ul>
-                            <p><button id="lianjiang-button" class="select-location" ng-click="location_display('lianjiang')">+連江縣</button></p>
                             <ul id="lianjiang" class="location-ul">
+                                <p id="button19">連江縣 <button ng-click="return_to_city()">x</button></p>     
                                 <li ng-repeat="lianjiang in lianjiangs" id="{{lianjiang.english}}" ng-click="serchDistrict('{{lianjiang.english}}','18','連江縣')">
                                     <button style="background:none; border:0;">{{lianjiang.chinese}}</button>
                                 </li>
                             </ul>
-                        </div>         
+                        </div>
                     </div>
+                </div>
+                <div class="left_block_content2">
+                    <p>篩選條件</p>
                 </div>
             </div>
             <div class="background rside">
