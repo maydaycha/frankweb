@@ -47,9 +47,9 @@
                                 <button id="clinic-button" class="select-location-class" ng-click="change_seach_condition('clinic')">診所</button>
                             </th>
                         </table> -->
-                        <div class="selectDepart" id="selectDepart" ng-model="depart">
+                       <!--  <div class="selectDepart" id="selectDepart" ng-model="depart">
                             <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select>
-                        </div>
+                        </div> -->
                         <p><button id="jilong-button" class="select-location" ng-click="location_display('jilong')">+基隆市</button></p>
                         <p><button id="taipei-button" class="select-location" ng-click="location_display('taipei')">+台北市</button></p>
 
@@ -211,6 +211,9 @@
                 </div>
                 <div class="left_block_content2">
                     <p>篩選條件</p>
+                    <div class="selectDepart" id="selectDepart" ng-model="depart">
+                        <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select>
+                    </div>
                 </div>
             </div>
             <div class="background rside">

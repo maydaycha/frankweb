@@ -87,9 +87,8 @@
  		padding-right: 15px;
  		overflow-y: scroll;
  		height: 300px;
- 		width:40%;
- 		border-bottom: 1px solid;
-
+ 		width:11%;
+ 		/*border-bottom: 1px solid;*/
  	}
 
  	.right_block {
@@ -338,7 +337,7 @@
 	left:20px; 
 	top:5px;
 	width:80px;
-	display: none;
+	/*display: none;*/
 }
 
 #section_for_article{
