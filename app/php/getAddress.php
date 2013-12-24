@@ -12,7 +12,6 @@ $class = $_POST["class"];
 $url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='.$lat.','.$lng.'&sensor=false&language=zh-tw';
 $get = file_get_contents($url);
 $jsondecode = json_decode($get);
-// echo json_encode($jsondecode,JSON_UNESCAPED_UNICODE);
 
 for($j=0;$j<count($jsondecode->results[0]->address_components);$j++)
 	if($jsondecode->results[0]->address_components[$j]->types[0]=="administrative_area_level_2"){

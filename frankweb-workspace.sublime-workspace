@@ -1,0 +1,1001 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"marg",
+				"margin-left"
+			],
+			[
+				"loca",
+				"locationArray"
+			],
+			[
+				"mar",
+				"margin-top"
+			],
+			[
+				"pad",
+				"padding-left"
+			],
+			[
+				"pa",
+				"padding-left"
+			],
+			[
+				"cli",
+				"clinic"
+			],
+			[
+				"fon",
+				"font-weight"
+			],
+			[
+				"l",
+				"list-style-type"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"bor",
+				"border-bottom"
+			],
+			[
+				"fal",
+				"float"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"back",
+				"background-image"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"QU",
+				"QUERY_STRING_str"
+			],
+			[
+				"set",
+				"setMap"
+			],
+			[
+				"d",
+				"display"
+			],
+			[
+				"vi",
+				"visible"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"js",
+				"jsondecode"
+			],
+			[
+				"li",
+				"list"
+			],
+			[
+				"lis",
+				"list-style-type"
+			],
+			[
+				"search",
+				"searchResults"
+			],
+			[
+				"sear",
+				"searchResults"
+			],
+			[
+				"key",
+				"keyCode"
+			],
+			[
+				"se",
+				"searchRequest"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"dis",
+				"district"
+			],
+			[
+				"ger",
+				"getDistrict"
+			],
+			[
+				"dist",
+				"district"
+			],
+			[
+				"br",
+				"br"
+			],
+			[
+				"cl",
+				"classfication"
+			],
+			[
+				"bck",
+				"background-color"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"block",
+				"left_block"
+			],
+			[
+				"nav",
+				"nav-link"
+			],
+			[
+				"mr",
+				"margin-left"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"pipe",
+				"pipe_from_user"
+			],
+			[
+				"pipe_",
+				"pipe_to_user"
+			],
+			[
+				"STD",
+				"STDIN_FILENO"
+			],
+			[
+				"this",
+				"thisUserID"
+			],
+			[
+				"pip",
+				"pipe_fd_ToUser"
+			],
+			[
+				"rece",
+				"receiver_record_sender"
+			],
+			[
+				"send",
+				"senderID"
+			],
+			[
+				"ST",
+				"STDIN_FILENO"
+			],
+			[
+				"sender",
+				"senderID"
+			],
+			[
+				"pi",
+				"pipe_from_user"
+			],
+			[
+				"strc",
+				"strcpy"
+			],
+			[
+				"recer",
+				"receiverID"
+			],
+			[
+				"rec",
+				"receiverID"
+			],
+			[
+				"user",
+				"user_InfoTable"
+			],
+			[
+				"reci",
+				"receiver"
+			],
+			[
+				"ini",
+				"initial_cmd"
+			],
+			[
+				"now",
+				"now_cmd_line"
+			],
+			[
+				"jum",
+				"jump_num"
+			],
+			[
+				"recie",
+				"receiverID"
+			],
+			[
+				"re",
+				"receiverID"
+			],
+			[
+				"receiver",
+				"receiver_record_sender"
+			],
+			[
+				"pep",
+				"pipe_to_userID"
+			],
+			[
+				"MAX",
+				"MAX_USER"
+			],
+			[
+				"pipe_to",
+				"pipe_to_user"
+			],
+			[
+				"is",
+				"isfirst"
+			],
+			[
+				"no",
+				"nouse"
+			],
+			[
+				"err",
+				"errmsg"
+			],
+			[
+				"use",
+				"user_FDtable"
+			],
+			[
+				"addr",
+				"addr_port"
+			],
+			[
+				"name",
+				"name"
+			],
+			[
+				"USER",
+				"user_InfoTable"
+			],
+			[
+				"Use",
+				"userNametable"
+			],
+			[
+				"sin",
+				"sin_port"
+			],
+			[
+				"client",
+				"client_addr"
+			],
+			[
+				"inet",
+				"inet_ntoa"
+			],
+			[
+				"U",
+				"Uer_FDtable"
+			],
+			[
+				"去除",
+				"去除句首空白的配套"
+			],
+			[
+				"soc",
+				"sockfd"
+			],
+			[
+				"FD",
+				"FD_SET"
+			],
+			[
+				"read",
+				"readmask"
+			],
+			[
+				"socket",
+				"socket_count"
+			],
+			[
+				"get",
+				"getArticle"
+			],
+			[
+				"xinzhus",
+				"xinzhushis"
+			],
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"margin",
+				"margin-right"
+			],
+			[
+				"bo",
+				"article_block"
+			],
+			[
+				"c",
+				"cols	Attr"
+			],
+			[
+				"cah",
+				"change_to_article"
+			],
+			[
+				"lian",
+				"lianjiangs"
+			],
+			[
+				"jinm",
+				"jinmens"
+			],
+			[
+				"pen",
+				"penghus"
+			],
+			[
+				"taid",
+				"taidongs"
+			],
+			[
+				"hua",
+				"hualians"
+			],
+			[
+				"yi",
+				"yilans"
+			],
+			[
+				"pingd",
+				"pingdongs"
+			],
+			[
+				"gaox",
+				"gaoxiongs"
+			],
+			[
+				"yu",
+				"yunlins"
+			],
+			[
+				"zhan",
+				"zhanghuas"
+			],
+			[
+				"miao",
+				"miaolis"
+			],
+			[
+				"xin",
+				"xinbeishis"
+			],
+			[
+				"info",
+				"infowindow"
+			],
+			[
+				"location",
+				"locationNum"
+			],
+			[
+				"cit",
+				"cityArray"
+			],
+			[
+				"str_s",
+				"str_split"
+			],
+			[
+				"lo",
+				"locationArray"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"border-w",
+				"border-right-width"
+			],
+			[
+				"backgo",
+				"background-color"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"mari",
+				"margin-bottom"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"a",
+				"action	Attr"
+			],
+			[
+				"print",
+				"print_r"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/js/google_map.js",
+			"settings":
+			{
+				"buffer_size": 4400,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/index2.html",
+			"settings":
+			{
+				"buffer_size": 24079,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/js/controllers.js",
+			"settings":
+			{
+				"buffer_size": 17033,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/css/style.css",
+			"settings":
+			{
+				"buffer_size": 7637,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/php/getAddress.php",
+			"settings":
+			{
+				"buffer_size": 1373,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 187.0,
+		"selected_items":
+		[
+		],
+		"width": 404.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Maydaycha/Sites/frankweb/app/data/gaoxiong.json",
+		"/Users/Maydaycha/NP_project/Project3/hw3.cpp",
+		"/Users/Maydaycha/Downloads/SourceCodePro_WebFontsOnly-1.017/SVG/SourceCodePro-Regular.svg",
+		"/Users/Maydaycha/Sites/frankweb/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/frank.webflows/app/css/style.css",
+		"/Users/Maydaycha/Sites/frank.webflows/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/frank.webflows/app/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows/app/js/google_map.js",
+		"/Users/Maydaycha/np_project1/dupserver.cpp",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/partials/partial3.html",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/partials/partial1.html",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/partials/partial2.html",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/css/style.css",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/php/getAddress.php",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/js/google_map.js",
+		"/Users/Maydaycha/Sites/frank.webflows_v5/app/php/getArticle.php",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/spiders/__init__.py",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/items.py",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/pipelines.py",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/fb.py",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/spiders/google.py",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/card.result",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/__init__.py",
+		"/Users/Maydaycha/Sites/frank.webflows_v3/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/frank.webflows_v3/app/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows_v3/app/css/style.css",
+		"/Users/Maydaycha/Sites/frank.webflows_v3/app/css/app.css",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/js/google_map.js",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/selectLocation.php",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/js/app.js",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/partials/partial3.html",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/search.php",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/css/style.css",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/getAllClinic.php",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/test.php",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/partials/partial2.html",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/getArticle.php",
+		"/Users/Maydaycha/Sites/frank.webflows_backup/app/php/getAllHospital.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/search_result.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/partials/partial2.html",
+		"/Users/Maydaycha/Sites/frank.webflows/app/partials/partial3.html",
+		"/Users/Maydaycha/Sites/frank.webflows/app/css/maydaycha.webflow.css",
+		"/Users/Maydaycha/Sites/frank.webflows/app/js/app.js",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/selectLocation.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/partials/partial1.html",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/googleSpider.sublime-project",
+		"/Users/Maydaycha/Documents/python/CardShare_Crawler/cardshare/settings.py",
+		"/Users/Maydaycha/Sites/frank.webflows/app/hover.html",
+		"/Users/Maydaycha/np_project2/server.cpp",
+		"/Users/Maydaycha/np_project2/server2.cpp",
+		"/Users/Maydaycha/np_project2/serverProject1.cpp",
+		"/Users/Maydaycha/Documents/NCTU/Network_programming/NP_from_other/參考範例/NP/hw2/NP-hw2/Concurrent-Connection-Oriented/server.c",
+		"/Users/Maydaycha/np_project2/multiServer.cpp",
+		"/Users/Maydaycha/Desktop/np_project2/server.cpp",
+		"/Users/Maydaycha/Desktop/sv2.cpp",
+		"/Users/Maydaycha/np_project2/may.sh",
+		"/Users/Maydaycha/np_project2/w.sh",
+		"/Users/Maydaycha/np_project2/serverProject1_debugmode.cpp",
+		"/Users/Maydaycha/np_project2/dupserver.cpp",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/article.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/index.html",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/DB_Class.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/insertLatLngToDB.php",
+		"/Users/Maydaycha/Sites/frank.webflows/app/php/DB_config.php",
+		"/Users/Maydaycha/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/Maydaycha/Sites/frank.webflows/angular-seed/app/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows/css/style.css",
+		"/Users/Maydaycha/Sites/frank.webflows/css/maydaycha.webflow.css",
+		"/Users/Maydaycha/Sites/frank.webflows/css/webflow.css",
+		"/Users/Maydaycha/Sites/frank.webflows/index.html",
+		"/Users/Maydaycha/Sites/frank.webflows/index2.html",
+		"/Users/Maydaycha/Sites/frank.webflows/angular-seed/app/index.html",
+		"/Users/Maydaycha/Sites/Frank/app/js/controllers.js",
+		"/Users/Maydaycha/Sites/Frank/app/js/app.js",
+		"/Users/Maydaycha/Sites/Frank/app/index.html",
+		"/Users/Maydaycha/Sites/Frank/app/example.html",
+		"/Users/Maydaycha/Sites/Frank/app/js/example-controller.js",
+		"/Users/Maydaycha/Sites/googlemap/angular-google-maps/example/example.html",
+		"/Users/Maydaycha/Sites/Frank/app/js/services.js",
+		"/Users/Maydaycha/Sites/Frank/app/example/example-controller.js",
+		"/Users/Maydaycha/Sites/Frank/app/example/example.html",
+		"/Users/Maydaycha/Sites/odesk/example_oauth_zf.php",
+		"/Users/Maydaycha/Downloads/example_oauth_zf.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"selectDepart",
+			"locationArray",
+			"id=\"button0\"",
+			"id=\"button\"",
+			"tab_container1",
+			"id=\"hospital\"",
+			"id=\"clinic\"",
+			"location-ul",
+			"select-l",
+			"location-ul",
+			"get",
+			"ajaxGetJson",
+			"clusterMarkers",
+			"MarkerClusterer",
+			"ajaxGetJson",
+			"getCurrentPosition",
+			"clusterMarkers",
+			"after_select_init",
+			"isfirst",
+			"clusterMarkers",
+			"serchDistrict",
+			"ajaxGetJson",
+			"socket",
+			"search",
+			"removeMarkers",
+			"after_select_init",
+			"unsetCluster",
+			"removeMarkers",
+			"clusterMarkers",
+			"removeMarkers",
+			"ajaxGetJson",
+			"getCurrentPosition",
+			"marker",
+			"removeMarkers",
+			"countMarker",
+			"initialize",
+			"map",
+			"addMarker",
+			"toast",
+			"map",
+			"ma'p",
+			"resultCount",
+			"chang",
+			"left_block",
+			"search",
+			"section_for_hospitalList",
+			"search",
+			"afterserchDistrict",
+			"zoom",
+			".change",
+			"select",
+			"_lat",
+			"global_district",
+			"getInitialDistrict",
+			"$scope.district",
+			"getCurrent",
+			"print",
+			"GoogleSpider",
+			"n",
+			"b",
+			"n",
+			"osx",
+			"CardWriterPipeline",
+			"node",
+			"select",
+			"extract",
+			"re",
+			"select",
+			"selector",
+			"HtmlXPathSelector",
+			"url",
+			"des",
+			"desc",
+			"des",
+			"main",
+			"searchList",
+			"search",
+			"$",
+			"searchResult",
+			"search",
+			"main",
+			"center_block",
+			"article",
+			"after_select_init",
+			"global_district",
+			"district",
+			"none",
+			"now_classfication",
+			"getCUrrentPosition",
+			"district",
+			"ng-select",
+			"scope.depart",
+			"district",
+			"now_classfication",
+			"change",
+			"change_coloe",
+			"search",
+			"location_info",
+			"$",
+			"drop-down",
+			"nav",
+			"ng-view",
+			"about_us",
+			"關於",
+			"saveAtricle",
+			"controller",
+			"suggest",
+			"next",
+			"send",
+			"hover",
+			"read",
+			"leave",
+			"wd",
+			"readFromBuffer",
+			"open",
+			"dup2",
+			"open",
+			"wait",
+			"open",
+			"S_IRUSR",
+			"mkfifo",
+			"unlink",
+			"open",
+			"opeb",
+			"SIGUSR1",
+			"FIFOread",
+			"FIFOopen",
+			"SIGUSR2"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"}\n"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "/Users/Maydaycha/Sites/frankweb"
+		}
+	],
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/js/google_map.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4400,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								859,
+								859
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/index2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24079,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								15380,
+								15380
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/js/controllers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17033,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16709,
+								16709
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5827.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/css/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7297,
+								7297
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7525.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/php/getAddress.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1373,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1118,
+								1118
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -452,10 +452,13 @@ $(document).keydown(function(event){
 
 $scope.list = [];
 function search2(){
+	var pass_lat = getInitialLat(); 
+	var pass_lng = getInitialLng();
+
 	$http({
 		method: "POST",
 		url : './php/search.php',
-		data : $.param({"argv":$scope.searchRequest}),
+		data : $.param({"argv" : $scope.searchRequest, "lat" : pass_lat, "lng" : pass_lng }),
 		headers: {'Content-type': 'application/x-www-form-urlencoded'}
 	}).
 	success(function(data){
@@ -481,6 +484,9 @@ function search2(){
 
 $scope.search1 = function(){
 	// alert("in search1");
+	var pass_lat = getInitialLat(); 
+	var pass_lng = getInitialLng();
+	
 	if($scope.searchRequest==null){
 		alert("input somethong");
 	}
@@ -488,7 +494,7 @@ $scope.search1 = function(){
 		$http({
 			method: "POST",
 			url : './php/search.php',
-			data : $.param({"argv":$scope.searchRequest}),
+			data : $.param({"argv" : $scope.searchRequest, "lat" : pass_lat, "lng" : pass_lng }),
 			headers: {'Content-type': 'application/x-www-form-urlencoded'}
 		}).
 		success(function(data){
