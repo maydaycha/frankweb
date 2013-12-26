@@ -332,150 +332,186 @@
 */
 
 
-.selectDepart{
+/*.selectDepart{
 	position:relative;
 	left:20px; 
 	top:5px;
 	width:80px;
-	/*display: none;*/
-}
-
-#section_for_article{
-	/*width:1240px;*/
-	width: 90%;
-	border-right:0px;
-	border-left:dotted 1px #F60;
-}
-
-.articlePart{
-	position:relative; 
-	width:80%; 
-	height:90%;
-	margin-left:200px; 
-	margin-right:20px; 
-	margin-top:50px; 
-	overflow:scroll;
-}
-.articlePart ul{
-	list-style-type: none;
-}
-
-.articlePart ul li{
-	margin-left: 10px;
-}
-
-.articleTitle{
-	color: rgb(255, 102, 51);
-}
-
-.articleContent{
-	font-size: 16px;
-}
-
-#section_for_hospitalList{
-	/*overflow: scroll;*/
-}
-
-#searchResult ul{
-	list-style-type: none;
-
-}
-
-#searchList{
 	display: none;
-}
+	}*/
 
-.tab{
-	padding-left: 13px;
-}
+	.selectDepart{
+		position:relative;
+		/*left:20px; */
+		right: 40px;
+		/*border: 1px solid;*/
+		/*top:5px;*/
+		/*width:200px;*/
+		/*display: none;*/
+	}
+	.selectDepart ul{
+		/*border: 1px solid;*/
+		list-style-type: none;
+		float: left;
+		position: relative;
+		left: 15px;
+		width: 60px;
 
+	}
+	.selectDepart ul li ul{
+		width: 70px;
+		margin-bottom: 50px;
+		display: none;
+	}
+	.selectDepart ul li ul li{
+		position: relative;
+		top:-18px;
+		right: 15px;
+		background-color: #cccccc;
+		padding-left: 10px;
+		margin-bottom: 3px;
+		text-decoration: none;
+	}
+	.selectDepart ul li ul li a{
+		color: black;
+		text-decoration: none;
+	}
+	#section_for_article{
+		/*width:1240px;*/
+		width: 90%;
+		border-right:0px;
+		border-left:dotted 1px #F60;
+	}
 
-.item_type{
-	position:relative;
-	/*background: url(../img/mapbgterm1) 10px 0px no-repeat;*/
-	/*padding-left: 50px;*/
-	/*width: 40px;*/
-	height: 27px;
-	margin-left: 10px;
-	/*padding-bottom: 100px;*/
-	list-style-type: none;
-}
-.item_area{
-	background: url(../img/mapbgterm1) -20px -7px no-repeat;
-	/*width:60px;*/
-	height:27px;
-	float: left;
-	/*overflow: hidden;*/
-	margin-top: 7px;
-	padding-left: 10px;
-	/*margin-right: 10px;*/
-	/*list-style: none outside none;*/
-}
+	.articlePart{
+		position:relative; 
+		width:80%; 
+		height:90%;
+		margin-left:200px; 
+		margin-right:20px; 
+		margin-top:50px; 
+		overflow:scroll;
+	}
+	.articlePart ul{
+		list-style-type: none;
+	}
 
-/* Tabs */
-.abgne_tab {
-	clear: left;
-	width: 400px;
-	margin: 10px 0;
-}
-.tabs{
-	/*position: fixed;*/
-	/*margin-top: -12px;*/
-}
-ul.tabs {
-	width: 100%;
-	height: 32px;
-	border-bottom: 1px solid #999;
-	border-left: 1px solid #999;
-	margin-left: -18px;
-	/*padding-bottom: 10px;*/
-	margin-bottom: -10px;
-}
-ul.tabs li {
-	float: left;
-	height: 31px;
-	line-height: 31px;
-	overflow: hidden;
-	position: relative;
-	margin-bottom: -1px;	 /*讓 li 往下移來遮住 ul 的部份 border-bottom */
-	border: 1px solid #999;
-	/*border-left: none;*/
-	border-left: 1px solid #999;
-	background: #e1e1e1;
-}
-ul.tabs li a {
-	display: block;
-	padding: 0 20px;
-	color: #000;
-	border: 1px solid #fff;
-	text-decoration: none;
-}
-ul.tabs li a:hover {
-	background: #ccc;
-}
-ul.tabs li.active  {
-	background: #fff;
-	border-bottom: 1px solid#fff;
-}
-ul.tabs li.active a:hover {
-	background: #fff;
-}
-div.tab_container {
-	clear: left;
-	width: 43%;
-	/*border: 1px solid #999;*/
-	border-top: none;
-	background: #fff;
-	margin-left: 2px;
-}
-div.tab_container .tab_content {
-	padding: 20px;
-}
-div.tab_container .tab_content h2 {
-	margin: 0 0 20px;
-}
+	.articlePart ul li{
+		margin-left: 10px;
+	}
+
+	.articleTitle{
+		color: rgb(255, 102, 51);
+	}
+
+	.articleContent{
+		font-size: 16px;
+	}
+
+	#section_for_hospitalList{
+		/*overflow: scroll;*/
+	}
+
+	#searchResult ul{
+		list-style-type: none;
+
+	}
+
+	#searchList{
+		display: none;
+	}
+
+	.tab{
+		padding-left: 13px;
+	}
 
 
-#test1{
-	/* display: none; */
-}
+	.item_type{
+		position:relative;
+		/*background: url(../img/mapbgterm1) 10px 0px no-repeat;*/
+		/*padding-left: 50px;*/
+		/*width: 40px;*/
+		height: 27px;
+		margin-left: 10px;
+		/*padding-bottom: 100px;*/
+		list-style-type: none;
+	}
+	.item_area{
+		background: url(../img/mapbgterm1) -20px -7px no-repeat;
+		/*width:60px;*/
+		height:27px;
+		float: left;
+		/*overflow: hidden;*/
+		margin-top: 7px;
+		padding-left: 10px;
+		/*margin-right: 10px;*/
+		/*list-style: none outside none;*/
+	}
+
+	/* Tabs */
+	.abgne_tab {
+		clear: left;
+		width: 400px;
+		margin: 10px 0;
+	}
+	.tabs{
+		/*position: fixed;*/
+		/*margin-top: -12px;*/
+	}
+	ul.tabs {
+		width: 100%;
+		height: 32px;
+		border-bottom: 1px solid #999;
+		border-left: 1px solid #999;
+		margin-left: -18px;
+		/*padding-bottom: 10px;*/
+		margin-bottom: -10px;
+	}
+	ul.tabs li {
+		float: left;
+		height: 31px;
+		line-height: 31px;
+		overflow: hidden;
+		position: relative;
+		margin-bottom: -1px;	 /*讓 li 往下移來遮住 ul 的部份 border-bottom */
+		border: 1px solid #999;
+		/*border-left: none;*/
+		border-left: 1px solid #999;
+		background: #e1e1e1;
+	}
+	ul.tabs li a {
+		display: block;
+		padding: 0 20px;
+		color: #000;
+		border: 1px solid #fff;
+		text-decoration: none;
+	}
+	ul.tabs li a:hover {
+		background: #ccc;
+	}
+	ul.tabs li.active  {
+		background: #fff;
+		border-bottom: 1px solid#fff;
+	}
+	ul.tabs li.active a:hover {
+		background: #fff;
+	}
+	div.tab_container {
+		clear: left;
+		width: 43%;
+		/*border: 1px solid #999;*/
+		border-top: none;
+		background: #fff;
+		margin-left: 2px;
+	}
+	div.tab_container .tab_content {
+		padding: 20px;
+	}
+	div.tab_container .tab_content h2 {
+		margin: 0 0 20px;
+	}
+
+
+	#test1{
+		/* display: none; */
+	}

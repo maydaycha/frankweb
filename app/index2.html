@@ -209,10 +209,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="left_block_content2">
+                <!-- <div class="left_block_content2">
                     <p>篩選條件</p>
                     <div class="selectDepart" id="selectDepart" ng-model="depart">
                         <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select>
+                    </div>
+                </div> -->
+                <div class="left_block_content2">
+                    <p>篩選條件</p> 
+                    <div class="selectDepart" id="selectDepart" ng-model="depart">
+                        <ul >
+                            <li id="menu">科別 》
+                                <ul>
+                                    <li><a href="" ng-click="changeDept('不分科')">不分科</a></li>      
+                                    <li><a href="" ng-click="changeDept('眼科')">眼科</a></li>      
+                                    <li><a href="" ng-click="changeDept('耳鼻喉科')">耳鼻喉科</a></li>      
+                                    <li><a href="" ng-click="changeDept('小兒科')">小兒科</a></li>      
+                                    <li><a href="" ng-click="changeDept('婦產科')">婦產科</a></li>      
+                                    <li><a href="" ng-click="changeDept('復健科')">復健科</a></li>      
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- <select id="selectDepart"ng-model="depart" ng-options="d.name for d in departs"></select> -->
                     </div>
                 </div>
             </div>

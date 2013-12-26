@@ -201,19 +201,19 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 				$("#button"+i).css("display", "block");
 			$("#"+locationId).css("display","block");
 			
-		$("#tab_container1").css("display", "none");
-		$("#tab_container2").css("display", "block");
-	}
+			$("#tab_container1").css("display", "none");
+			$("#tab_container2").css("display", "block");
+		}
 
-	$scope.return_to_city = function(){
-		for(var i=0; i<__locationArray.length ; i++)
-			$("#"+__locationArray[i][0]).css("display", "none");
+		$scope.return_to_city = function(){
+			for(var i=0; i<__locationArray.length ; i++)
+				$("#"+__locationArray[i][0]).css("display", "none");
 
-		$("#tab_container1").css("display", "block");
-		$("#tab_container2").css("display", "none");
-	}
+			$("#tab_container1").css("display", "block");
+			$("#tab_container2").css("display", "none");
+		}
 
-	$scope.change_seach_condition = function(classfication){
+		$scope.change_seach_condition = function(classfication){
 		// alert(getInitialDistrict());
 		$scope.district = getInitialDistrict();
 		$scope.city = getInitialCity();
@@ -374,45 +374,98 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   	}
 
 
-  	$("#selectDepart").change(function(){
-  		var map = after_select_init();
-  		console.log("!! city: "+ $scope.city);
-  		console.log("!! district: "+ $scope.district);
-  		console.log("!! class: "+ now_classfication);
-  		console.log("!! depart: "+ $scope.depart.name);
-  		if($scope.depart.name == "不分科"){
-  			var dataJson = $.param({
-  				"city": $scope.city,
-  				"district": $scope.district,
-  				"classfication": now_classfication,
-  				"depart": "all"
-  			});
-  		}
-  		else{
-  			var dataJson = $.param({
-  				"city" : $scope.city,
-  				"district": $scope.district,
-  				"classfication": now_classfication,
-  				"depart": $scope.depart.name
-  			});
+  	// $("#selectDepart").change(function(){
+  	// 	var map = after_select_init();
+  	// 	console.log("!! city: "+ $scope.city);
+  	// 	console.log("!! district: "+ $scope.district);
+  	// 	console.log("!! class: "+ now_classfication);
+  	// 	console.log("!! depart: "+ $scope.depart.name);
+  	// 	if($scope.depart.name == "不分科"){
+  	// 		var dataJson = $.param({
+  	// 			"city": $scope.city,
+  	// 			"district": $scope.district,
+  	// 			"classfication": now_classfication,
+  	// 			"depart": "all"
+  	// 		});
+  	// 	}
+  	// 	else{
+  	// 		var dataJson = $.param({
+  	// 			"city" : $scope.city,
+  	// 			"district": $scope.district,
+  	// 			"classfication": now_classfication,
+  	// 			"depart": $scope.depart.name
+  	// 		});
 
-  		}
-  		console.log("json: " +dataJson);
+  	// 	}
+  	// 	console.log("json: " +dataJson);
 
-  		$http({
-  			method: "POST",
-  			url: './php/selectLocation.php',
-  			data: dataJson,
-  			headers: {'Content-type': 'application/x-www-form-urlencoded'}
-  		}).success(function(data){	
-  			console.log(data);
-  			if(data[0]==false){
-  				alert("抱歉！找不到您要的選擇，請換地區或是科別");
-  			}
-  			else{
-  				
-  				removeMarkers();
-  				for( var i=0; i<data.length; i++){
+  	// 	$http({
+  	// 		method: "POST",
+  	// 		url: './php/selectLocation.php',
+  	// 		data: dataJson,
+  	// 		headers: {'Content-type': 'application/x-www-form-urlencoded'}
+  	// 	}).success(function(data){	
+  	// 		console.log(data);
+  	// 		if(data[0]==false){
+  	// 			alert("抱歉！找不到您要的選擇，請換地區或是科別");
+  	// 		}
+  	// 		else{
+  		
+  	// 			removeMarkers();
+  	// 			for( var i=0; i<data.length; i++){
+  	// 				// call google_map.js
+  	// 				addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
+  	// 			}
+  	// 			if($scope.afterserchDistrict)
+  	// 				initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
+  	// 			else
+  	// 				initialLocation = new google.maps.LatLng(getInitialLat(),getInitialLng());
+  	// 			console.log("initialLocation: " + initialLocation);
+
+  	// 			map.setCenter(initialLocation);
+  	// 			clusterMarkers(map,50, 15);
+  	// 		}
+  	// 	}).
+  	// 	error(function(){
+  	// 		alert("serchDistrict error");
+  	// 	});
+  	// });
+
+$scope.changeDept = function(departName){
+	var map = after_select_init();
+
+	if(departName == "不分科"){
+		var dataJson = $.param({
+			"city": $scope.city,
+			"district": $scope.district,
+			"classfication": now_classfication,
+			"depart": "all"
+		});
+	}
+	else{
+		var dataJson = $.param({
+			"city" : $scope.city,
+			"district": $scope.district,
+			"classfication": now_classfication,
+			"depart": departName
+		});
+	}
+	console.log("json: " +dataJson);
+
+	$http({
+		method: "POST",
+		url: './php/selectLocation.php',
+		data: dataJson,
+		headers: {'Content-type': 'application/x-www-form-urlencoded'}
+	}).success(function(data){	
+		console.log(data);
+		if(data[0]==false){
+			alert("抱歉！找不到您要的選擇，請換地區或是科別");
+		}
+		else{
+			
+			removeMarkers();
+			for( var i=0; i<data.length; i++){
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
@@ -426,10 +479,11 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   				clusterMarkers(map,50, 15);
   			}
   		}).
-  		error(function(){
-  			alert("serchDistrict error");
-  		});
-  	});
+	error(function(){
+		alert("serchDistrict error");
+	});
+	
+}
 
 
 $scope.searchRequest="";
@@ -554,6 +608,43 @@ $scope.change_to_googlemap = function(){
 	$("#section_for_hospitalList").css("display",'block');
 }*/
 
+$scope.displayCondition = function(){
+	$("#menu li").hover(function(){
+		var _this = $(this), _subnav = _this.children('ul');
+
+		// 變更目前母選項的背景顏色
+		// 同時淡入子選單(如果有的話)
+		_this.css('backgroundColor', '#06c');
+		_subnav.stop(true, true).fadeIn(400);
+		// 變更目前母選項的背景顏色
+		// 同時淡出子選單(如果有的話)
+		// 也可以把整句拆成上面的寫法
+		$(this).css('backgroundColor', '').children('ul').stop(true, true).fadeOut(400);
+
+	})
+	// 取消超連結的虛線框
+	$('a').focus(function(){
+		this.blur();
+	});
+
+}
+
+$("#menu").hover(function(){
+	var _this = $(this), _subnav = _this.children('ul');
+
+		// 變更目前母選項的背景顏色
+		// 同時淡入子選單(如果有的話)
+		_this.css('backgroundColor', '#06c');
+		_subnav.stop(true, true).fadeIn(400);
+
+	}, function(){
+		// 變更目前母選項的背景顏色
+		// 同時淡出子選單(如果有的話)
+		// 也可以把整句拆成上面的寫法
+		$(this).css('backgroundColor', '').children('ul').stop(true, true).fadeOut(400);
+	});
+
+
 
 function navigate_to_mp(){
 	$("#section_for_googlemap").css("display","block");
@@ -567,6 +658,8 @@ function closeIt()
 }
 
 window.onbeforeunload = navigate_to_mp;
+
+
 
 
 
