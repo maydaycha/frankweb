@@ -6,6 +6,7 @@ var taipei = new google.maps.LatLng(25.0366641,121.5499766);
 var global_district;
 var markerCluster;
 var isfirst = true;
+var minZoomLevel = 5;
 // -----------Golbal variable-----------
 // $(document).ready(function() { initialize(); });
 window.onload=initialize('hospital');
@@ -23,7 +24,17 @@ function initialize(classfication){
 	else
 		type="hospital";
 	getCurrentPosition(true,type);
+
+	/* limit the minimum zoom */
+	google.maps.event.addListener(map, 'zoom_changed', function(){
+		if(map.getZoom() < minZoomLevel)
+			map.setZoom(minZoomLevel);
+	});
 }
+
+
+
+
 
 // for controller to initial a map
 function after_select_init(){
@@ -34,6 +45,13 @@ function after_select_init(){
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
+
+	/* limit the minimum zoom */
+	google.maps.event.addListener(map, 'zoom_changed', function(){
+		if(map.getZoom() < minZoomLevel)
+			map.setZoom(minZoomLevel);
+	});
+
 	return map;
 
 }

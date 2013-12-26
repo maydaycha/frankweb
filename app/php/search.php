@@ -37,25 +37,25 @@ while($result[$i] = $db->fetch_array()){
 if(count($result)==1)
 	$i = 0;
 
+/* search by address */
+// $query_string = "SELECT * FROM clinic WHERE address LIKE '%$argv%'";
+// $db->query($query_string);
+// while($result[$i] = $db->fetch_array()){
+// 	if($result[$i]!=null)
+// 		$i++;
+// };
+// if(count($result)==1)
+// 	$i = 0;
 
-$query_string = "SELECT * FROM clinic WHERE address LIKE '%$argv%'";
-$db->query($query_string);
-while($result[$i] = $db->fetch_array()){
-	if($result[$i]!=null)
-		$i++;
-};
-if(count($result)==1)
-	$i = 0;
 
-
-$query_string = "SELECT * FROM hospital WHERE address LIKE '%$argv%'";
-$db->query($query_string);
-while($result[$i] = $db->fetch_array()){
-	if($result[$i]!=null)
-		$i++;
-};
-if(count($result)==1)
-	$i = 0;
+// $query_string = "SELECT * FROM hospital WHERE address LIKE '%$argv%'";
+// $db->query($query_string);
+// while($result[$i] = $db->fetch_array()){
+// 	if($result[$i]!=null)
+// 		$i++;
+// };
+// if(count($result)==1)
+// 	$i = 0;
 
 
 $distance_array = array();

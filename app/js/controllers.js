@@ -199,14 +199,8 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 				$("#button"+i).css("display", "none");
 			else
 				$("#button"+i).css("display", "block");
-		// if($("#"+locationId).css("display")!="none"){
-			// $("#"+locationId).css("display","none");
-			// $("#"+locationArray[j][0]+"-button").html("+"+locationArray[j][1]);
-		// }
-		// else{
 			$("#"+locationId).css("display","block");
-			// $("#"+locationArray[j][0]+"-button").html("-"+locationArray[j][1]);
-		// }
+			
 		$("#tab_container1").css("display", "none");
 		$("#tab_container2").css("display", "block");
 	}
