@@ -8,7 +8,7 @@ var markerCluster;
 var isfirst = true;
 var minZoomLevel = 5;
 // -----------Golbal variable-----------
-// $(document).ready(function() { initialize(); });
+// $(document).ready(function() { initialize('hospital'); });
 window.onload=initialize('hospital');
 
 function initialize(classfication){ 
@@ -19,10 +19,12 @@ function initialize(classfication){
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
-	if(classfication=='clinic')
-		type='clinic';
+	if(classfication=="clinic")
+		type="clinic";
 	else
 		type="hospital";
+	map.setCenter(taipei);
+	ajaxGetJson(map,25.0366641,121.5499766,type);
 	getCurrentPosition(true,type);
 
 	/* limit the minimum zoom */
@@ -83,6 +85,7 @@ function getCurrentPosition(init,type){
 		browserSupportFlag = false;
 		handleNoGeolocation(browserSupportFlag);
 	}
+
 	function handleNoGeolocation(errorFlag) {
 		if (errorFlag == true)
 			alert("地圖定位失敗");

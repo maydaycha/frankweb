@@ -350,11 +350,12 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   			data: dataJson,
   			headers: {'Content-type': 'application/x-www-form-urlencoded'}
   		}).success(function(data){	
+  			console.log("~~");
   			console.log(data);
   			if(data[0]==false){
   				alert("抱歉！找不到您要的選擇，請換地區或是科別");
   			}
-  			else{
+  			else{	
   				removeMarkers();
   				unsetCluster();
   				for( var i=0; i<data.length; i++){
@@ -362,7 +363,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
   				clusterMarkers(map,50, 15);
-  				initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
+  				var initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
   				console.log("initialLocation: " + initialLocation);
   				map.setCenter(initialLocation);
   			}
