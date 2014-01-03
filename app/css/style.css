@@ -25,7 +25,7 @@
  .w-row {
 	/*margin-left: -10px;
 	margin-right: -10px*/
-	margin: 0px auto;
+	/*margin: 0px auto;*/
 	/*margin-left: 10%;*/
 	width: 80%;
 }
@@ -262,9 +262,10 @@ width: 100%;
  }
 
  .w-col{
- 	width: 400px;
+ 	/*width: 400px;*/
+ 	width: 45%;
  	float: left;	
- 	margin-left: 30px;
+ 	margin-left: 40px;
  	margin-top: 50px;
  }
 
