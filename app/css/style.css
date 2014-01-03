@@ -19,8 +19,23 @@
  	/*border-bottom:1 solid #000000; */
  	border-color: #E6DEDE; 
  	border-right-width: 2px;
- 	border-right-style: dotted;
+ 	borderw-ro-right-style: dotted;
  } 
+
+ .w-row {
+	/*margin-left: -10px;
+	margin-right: -10px*/
+	/*margin: 0px auto;*/
+	/*margin-left: 10%;*/
+}
+.w-container {
+margin-left: 5%;
+/*margin-right: 5%;*/
+/*max-width: 500px;*/
+width: 100%;
+/*position: relative;*/
+/*max-height: 824px;*/
+}
 
  .content {
  	min-height: 100%;
@@ -79,7 +94,7 @@
  	right: -30px;
  	bottom: 400px;	
  	padding-right: 15px;
- 	overflow-y: scroll;
+ 	/*overflow-y: scroll;*/
  	height: 300px;
  	width:11%;
  	/*border-bottom: 1px solid;*/
@@ -125,9 +140,6 @@
  	background-color: #FF6633;
  	/*background-color: rgba(21, 104, 209, 0.61);*/
  	/*background-color: rgba(30, 32, 34, 0.61);*/
-
-
-
  }
 
  .search-bar{
@@ -251,7 +263,7 @@
  .w-col{
  	width: 400px;
  	float: left;	
- 	margin-left: 70px;
+ 	margin-left: 30px;
  	margin-top: 50px;
  }
 
@@ -360,7 +372,7 @@
 	}
 	.selectDepart ul li ul{
 		width: 70px;
-		margin-bottom: 50px;
+		margin-bottom: 60px;
 		display: none;
 	}
 	.selectDepart ul li ul li{

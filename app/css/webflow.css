@@ -131,7 +131,7 @@ textarea.w-input {
 .w-container {
 	margin-left: auto;
 	margin-right: auto;
-	max-width: 500px;
+	/*max-width: 500px;*/
 	max-height: 824px;
 }
 .w-container:before, .w-container:after {
@@ -143,8 +143,10 @@ textarea.w-input {
 	clear: both
 }
 .w-container .w-row {
-	margin-left: -10px;
-	margin-right: -10px
+	/*margin-left: -10px;
+	margin-right: -10px*/
+	/*margin: 0px auto;*/
+	margin-left: 10%;
 }
 .w-row:before, .w-row:after {
 	display: table;
@@ -156,7 +158,8 @@ textarea.w-input {
 }
 .w-row .w-row {
 	margin-left: 0;
-	margin-right: 0
+	margin-right: 0;
+	width:100%;
 }
 .w-col {
 	position: relative;
@@ -709,4 +712,4 @@ textarea.w-input {
 	.w-col-tiny-offset-11 {
 		margin-left: 91.66666666666666%
 	}
-} 
+}
