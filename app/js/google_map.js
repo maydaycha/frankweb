@@ -24,7 +24,7 @@ function initialize(classfication){
 	else
 		type="hospital";
 	map.setCenter(taipei);
-	ajaxGetJson(map,25.0366641,121.5499766,type);
+	ajaxGetJson_1(map,25.0366641,121.5499766,type);
 	getCurrentPosition(true,type);
 
 	/* limit the minimum zoom */
@@ -151,10 +151,40 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			success: function(data) {
 				// console.log(data);
 				removeMarkers();
-				if(!isfirst){
+				// if(!isfirst){
 					unsetCluster();
-					isfirst = false;
+					// isfirst = false;
+				// }
+				for( var i=0; i<data.length; i++){
+					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
+				clusterMarkers(map,50, 15);
+				global_district = data[0]['district'];
+				global_city = data[0]['city'];
+				console.log("initial~ district: " + global_district);
+				console.log("initial~ city: " + global_city);
+			},
+			error: function(){
+				alert("ajax error");
+			} 
+		});
+	}
+
+	function ajaxGetJson_1(map,lat,lng,classfication){
+		// var classfication = 'hospital';
+		var obj = {"lat":lat,"lng":lng,"class":classfication};
+		$.ajax({     
+			url: "./php/getAddress.php",     
+			type: "POST",     
+			dataType: "json",
+			data: obj,
+			success: function(data) {
+				// console.log(data);
+				// removeMarkers();
+				// if(!isfirst){
+					// unsetCluster();
+					// isfirst = false;
+				// }
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
