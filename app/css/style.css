@@ -25,13 +25,14 @@
  .w-row {
 	/*margin-left: -10px;
 	margin-right: -10px*/
-	/*margin: 0px auto;*/
+	margin: 0px auto;
 	/*margin-left: 10%;*/
+	width: 80%;
 }
 .w-container {
 margin-left: 5%;
 /*margin-right: 5%;*/
-/*max-width: 500px;*/
+/*max-width: 1000px;*/
 width: 100%;
 /*position: relative;*/
 /*max-height: 824px;*/
