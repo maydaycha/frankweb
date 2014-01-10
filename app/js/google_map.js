@@ -171,11 +171,6 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
-				// google.maps.event.addListener(map,"drag",function()
-				// {
-				// 	console.log("draging");
-				// 	after_drag = true;
-				// });
 
 				google.maps.event.addListener(map,"dragend",function()
 				{
@@ -194,9 +189,9 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				console.log("ajax error");
 			} 
 		});
-}
+	}
 
-function ajaxGetJson_1(map,lat,lng,classfication){
+	function ajaxGetJson_1(map,lat,lng,classfication){
 		// var classfication = 'hospital';
 		var obj = {"lat":lat,"lng":lng,"class":classfication};
 		$.ajax({     
@@ -228,7 +223,7 @@ function ajaxGetJson_1(map,lat,lng,classfication){
 				console.log("initial~ city: " + global_city);
 			},
 			error: function(){
-				alert("ajax error");
+				console.log("ajax1 error")
 			} 
 		});
 	}

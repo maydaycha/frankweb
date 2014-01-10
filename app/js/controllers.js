@@ -158,24 +158,6 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 		alert("getArticle error");
 	});
 
-	// 還沒做完， 醫院列表用， 但是診所超多真的要全部列出！？
-	/*$scope.listAllclinic = function(cityname){
-		$http({
-			method: "POST",
-			url: "./php/getAllClinic.php",
-			data: $.param({
-				"city" : cityname
-			}),
-			headers: {'Content-type': 'application/x-www-form-urlencoded'}
-		}).
-		success(function(data){
-			$scope.
-
-		})
-}*/
-	// 還沒做完， 醫院列表用， 但是診所超多真的要全部列出！？
-
-
 	$scope.change_color = function(){
 		$scope.color = $("#header").css("background-color");
 		if($scope.color=="rgba(21, 104, 209, 0.611765)")
@@ -362,6 +344,15 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
+
+  				google.maps.event.addListener(map,"dragend",function()
+  				{
+  					console.log(map.getCenter().lat());
+  					console.log(map.getCenter().lng());
+  					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+
+  				});
+  				
   				clusterMarkers(map,50, 15);
   				var initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
   				console.log("initialLocation: " + initialLocation);
