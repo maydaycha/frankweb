@@ -171,11 +171,11 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
-				google.maps.event.addListener(map,"drag",function()
-				{
-					console.log("draging");
-					after_drag = true;
-				});
+				// google.maps.event.addListener(map,"drag",function()
+				// {
+				// 	console.log("draging");
+				// 	after_drag = true;
+				// });
 
 				google.maps.event.addListener(map,"dragend",function()
 				{
@@ -214,6 +214,13 @@ function ajaxGetJson_1(map,lat,lng,classfication){
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
+				google.maps.event.addListener(map,"dragend",function()
+				{
+					console.log(map.getCenter().lat());
+					console.log(map.getCenter().lng());
+					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+
+				});
 				clusterMarkers(map,50, 15);
 				global_district = data[0]['district'];
 				global_city = data[0]['city'];
