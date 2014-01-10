@@ -191,7 +191,7 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				console.log("initial~ city: " + global_city);
 			},
 			error: function(){
-				alert("ajax error");
+				console.log("ajax error");
 			} 
 		});
 }
