@@ -4,8 +4,8 @@ require_once("DB_class.php");
 header("Content-Type:text/html; charset=utf-8");
 $lat = $_POST["lat"];
 $lng = $_POST["lng"];
-// $lat = 25.128531;
-// $lng = 121.751905;
+// $lat = 22.9872290802915;
+// $lng = 120.2192409802915;
 $class = $_POST["class"];
 // $class = 'clinic';
 

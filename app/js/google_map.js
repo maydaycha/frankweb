@@ -1,8 +1,8 @@
 
 // -----------Golbal variable-----------
 var map, geocoder,_lat,_lng;
-var marker={},info={}; 
-var taipei = new google.maps.LatLng(25.0366641,121.5499766);
+var marker={},info={}; var taipei = new google.maps.LatLng(25.0366641,121.5499766);
+
 var global_district;
 var markerCluster;
 var isfirst = true;
@@ -11,8 +11,9 @@ var minZoomLevel = 5;
 // $(document).ready(function() { initialize('hospital'); });
 window.onload=initialize('hospital');
 
+var type;
 function initialize(classfication){ 
-	var type;
+	// var type;
 	geocoder = new google.maps.Geocoder();  
 	var mapOptions = {
 		zoom: 11,
@@ -33,8 +34,6 @@ function initialize(classfication){
 			map.setZoom(minZoomLevel);
 	});
 }
-
-
 
 
 
@@ -108,6 +107,7 @@ function getCurrentPosition(init,type){
 
 function addMarker(map,locationName,lat,lng,tele,count){
 	console.log("addMarker");
+	var after_drag = false;
 	var latlng = new google.maps.LatLng(lat,lng);
 	marker[count] = new google.maps.Marker({
 		// map:map,
@@ -128,6 +128,19 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				info[i].close();
 			//open
 			infowindow.open(map, marker[count]);
+		});
+		google.maps.event.addListener(marker[count],"mouseover",function()
+		{
+			for(var i=0; i<Object.size(marker); i++)
+				info[i].close();
+			//open
+			infowindow.open(map, marker[count]);
+		});
+
+		google.maps.event.addListener(marker[count],"mouseout",function()
+		{
+			for(var i=0; i<Object.size(marker); i++)
+				info[i].close();
 		});
 	}
 
@@ -158,6 +171,19 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
+				google.maps.event.addListener(map,"drag",function()
+				{
+					console.log("draging");
+					after_drag = true;
+				});
+
+				google.maps.event.addListener(map,"dragend",function()
+				{
+					console.log(map.getCenter().lat());
+					console.log(map.getCenter().lng());
+					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+
+				});
 				clusterMarkers(map,50, 15);
 				global_district = data[0]['district'];
 				global_city = data[0]['city'];
@@ -168,9 +194,9 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				alert("ajax error");
 			} 
 		});
-	}
+}
 
-	function ajaxGetJson_1(map,lat,lng,classfication){
+function ajaxGetJson_1(map,lat,lng,classfication){
 		// var classfication = 'hospital';
 		var obj = {"lat":lat,"lng":lng,"class":classfication};
 		$.ajax({     

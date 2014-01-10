@@ -104,6 +104,7 @@ p {
   width: 70%;
   height: 50px;
   margin: 50px auto;
+  /*overflow-y: scroll;*/
 
 }
 .section.centered {
