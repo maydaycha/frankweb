@@ -16,7 +16,7 @@ function initialize(classfication){
 	// var type;
 	geocoder = new google.maps.Geocoder();  
 	var mapOptions = {
-		zoom: 11,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
@@ -106,20 +106,18 @@ function getCurrentPosition(init,type){
 
 
 function addMarker(map,locationName,lat,lng,tele,count){
-	console.log("addMarker");
 	var after_drag = false;
 	var latlng = new google.maps.LatLng(lat,lng);
 	marker[count] = new google.maps.Marker({
-		// map:map,
 		position:latlng,
 		title: locationName
 	});
-	// marker.setMap(map);
-	// marker.setMap(null);
-	// 新增InfoWindow：
-	var infowindow = new google.maps.InfoWindow();    //初始一個物件
+
+	// 新增InfoWindow
+	var infowindow = new google.maps.InfoWindow(); 
 	info[count] = infowindow;
-	infowindow.setContent("名稱："+locationName+"</br>"+"電話："+tele);    //InfoWindow的內容，可用Html語法
+	//InfoWindow的內容，可用Html語法
+	infowindow.setContent("名稱："+locationName+"</br>"+"電話："+tele);
 
 		// 在Marker click時，顯示InfoWindow：
 		google.maps.event.addListener(marker[count], 'click', function() {
@@ -174,9 +172,10 @@ function addMarker(map,locationName,lat,lng,tele,count){
 
 				google.maps.event.addListener(map,"dragend",function()
 				{
-					console.log(map.getCenter().lat());
-					console.log(map.getCenter().lng());
-					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+					// console.log(map.getCenter().lat());
+					// console.log(map.getCenter().lng());
+					// ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
 
 				});
 				clusterMarkers(map,50, 15);
@@ -200,30 +199,50 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			dataType: "json",
 			data: obj,
 			success: function(data) {
-				// console.log(data);
-				// removeMarkers();
-				// if(!isfirst){
-					// unsetCluster();
-					// isfirst = false;
-				// }
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
 				google.maps.event.addListener(map,"dragend",function()
 				{
-					console.log(map.getCenter().lat());
-					console.log(map.getCenter().lng());
-					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
-
+					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
 				});
 				clusterMarkers(map,50, 15);
 				global_district = data[0]['district'];
 				global_city = data[0]['city'];
-				console.log("initial~ district: " + global_district);
-				console.log("initial~ city: " + global_city);
+				// console.log("initial~ district: " + global_district);
+				// console.log("initial~ city: " + global_city);
 			},
 			error: function(){
 				console.log("ajax1 error")
+			} 
+		});
+	}
+
+	function getNearby(map,lat,lng,classfication){
+		var obj = {"lat":lat,"lng":lng,"class":classfication};
+		$.ajax({     
+			url: "./php/getNearby.php",     
+			type: "POST",
+			dataType: "json",
+			data: obj,
+			success: function(data) {
+				// handler for when result is empty array
+				if(data.length != 0){
+					global_district = data[0]['district'];
+					global_city = data[0]['city'];
+					removeMarkers();
+					unsetCluster();
+					for( var i=0; i<data.length; i++){
+						addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
+					}
+					google.maps.event.addListener(map,"dragend",function(){
+						getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
+					});
+					clusterMarkers(map,50, 15);
+				}
+			},
+			error: function(data){
+				console.log("ajax error");
 			} 
 		});
 	}
