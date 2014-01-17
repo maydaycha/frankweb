@@ -2,9 +2,9 @@
 require_once("DB_config.php");
 require_once("DB_class.php");
 header("Content-Type:text/html; charset=utf-8");
-$lat = $_POST["lat"];
-$lng = $_POST["lng"];
-$class = $_POST["class"];
+$lat = $_GET["lat"];
+$lng = $_GET["lng"];
+$class = $_GET["class"];
 
 // $lat = 22.9872290802915;
 // $lng = 120.2192409802915;

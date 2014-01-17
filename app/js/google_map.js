@@ -222,7 +222,7 @@ function addMarker(map,locationName,lat,lng,tele,count){
 		var obj = {"lat":lat,"lng":lng,"class":classfication};
 		$.ajax({     
 			url: "./php/getNearby.php",     
-			type: "POST",
+			type: "GET",
 			dataType: "json",
 			data: obj,
 			success: function(data) {
