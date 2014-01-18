@@ -7,6 +7,7 @@ var global_district;
 var markerCluster;
 var isfirst = true;
 var minZoomLevel = 5;
+var now_range = 0.05;
 // -----------Golbal variable-----------
 // $(document).ready(function() { initialize('hospital'); });
 window.onload=initialize('hospital');
@@ -25,13 +26,16 @@ function initialize(classfication){
 	else
 		type="hospital";
 	map.setCenter(taipei);
-	ajaxGetJson_1(map,25.0366641,121.5499766,type);
+	ajaxGetJson(map,25.0366641,121.5499766,type, false);
+	// ajaxGetJson(map,25.0366641,121.5499766,type);
 	getCurrentPosition(true,type);
 
 	/* limit the minimum zoom */
 	google.maps.event.addListener(map, 'zoom_changed', function(){
 		if(map.getZoom() < minZoomLevel)
 			map.setZoom(minZoomLevel);
+
+
 	});
 }
 
@@ -73,7 +77,7 @@ function getCurrentPosition(init,type){
 			console.log("initial lat: " +_lat);
 			console.log("initial lng: " +_lng);
 			if(init)
-				ajaxGetJson(map,_lat,_lng,type);
+				ajaxGetJson(map,_lat,_lng,type, true);
 		}, function() {
 			console.log("%s",browserSupportFlag);
 			handleNoGeolocation(browserSupportFlag);
@@ -97,7 +101,7 @@ function getCurrentPosition(init,type){
 		_lat=25.0366641;
 		_lng=121.5499766;
 		if(init)
-			ajaxGetJson(map,_lat,_lng,type);
+			ajaxGetJson(map,_lat,_lng,type, true);
 		alert("Set location to Taipei");
 
 
@@ -151,7 +155,7 @@ function addMarker(map,locationName,lat,lng,tele,count){
 		return size;
 	};
 
-	function ajaxGetJson(map,lat,lng,classfication){
+	function ajaxGetJson(map,lat,lng,classfication, removeCluster){
 		// var classfication = 'hospital';
 		var obj = {"lat":lat,"lng":lng,"class":classfication};
 		$.ajax({     
@@ -160,23 +164,31 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			dataType: "json",
 			data: obj,
 			success: function(data) {
-				// console.log(data);
-				removeMarkers();
-				// if(!isfirst){
+				if(removeCluster){
+					removeMarkers();
 					unsetCluster();
-					// isfirst = false;
-				// }
+				}
 				for( var i=0; i<data.length; i++){
 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 				}
 
-				google.maps.event.addListener(map,"dragend",function()
-				{
-					// console.log(map.getCenter().lat());
-					// console.log(map.getCenter().lng());
-					// ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
-					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
-
+				google.maps.event.addListener(map,"dragend",function(){
+					console.log("drag: range: " + now_range);
+					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);
+				});
+				google.maps.event.addListener(map,"zoom_changed",function(){
+					// alert("zoom: "+map.getZoom());
+					switch(map.getZoom()){
+						case 8: now_range = 2; break;
+						case 9: now_range = 1; break;
+						case 10: now_range = 0.5; break;
+						case 11: now_range = 0.2; break;
+						case 12: now_range = 0.1; break;
+						case 13: now_range = 0.05; break;
+						default: now_range = 0.02; break;
+					}
+					console.log("now_range :" +now_range);
+					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);
 				});
 				clusterMarkers(map,50, 15);
 				global_district = data[0]['district'];
@@ -184,42 +196,44 @@ function addMarker(map,locationName,lat,lng,tele,count){
 				console.log("initial~ district: " + global_district);
 				console.log("initial~ city: " + global_city);
 			},
-			error: function(){
+			error: function(data){
 				console.log("ajax error");
+				console.log(data);
 			} 
 		});
-	}
+}
 
-	function ajaxGetJson_1(map,lat,lng,classfication){
-		// var classfication = 'hospital';
-		var obj = {"lat":lat,"lng":lng,"class":classfication};
-		$.ajax({     
-			url: "./php/getAddress.php",     
-			type: "POST",     
-			dataType: "json",
-			data: obj,
-			success: function(data) {
-				for( var i=0; i<data.length; i++){
-					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
-				}
-				google.maps.event.addListener(map,"dragend",function()
-				{
-					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
-				});
-				clusterMarkers(map,50, 15);
-				global_district = data[0]['district'];
-				global_city = data[0]['city'];
-				// console.log("initial~ district: " + global_district);
-				// console.log("initial~ city: " + global_city);
-			},
-			error: function(){
-				console.log("ajax1 error")
-			} 
-		});
-	}
+// function ajaxGetJson_1(map,lat,lng,classfication){
+// 		// var classfication = 'hospital';
+// 		var obj = {"lat":lat,"lng":lng,"class":classfication};
+// 		$.ajax({     
+// 			url: "./php/getAddress.php",     
+// 			type: "POST",     
+// 			dataType: "json",
+// 			data: obj,
+// 			success: function(data) {
+// 				for( var i=0; i<data.length; i++){
+// 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
+// 				}
+// 				google.maps.event.addListener(map,"dragend",function(){
+// 					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, 0.03);
+// 				});
+// 				google.maps.event.addListener(map,"zoom_changed",function(){
+					
+// 					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, 0.1);
+// 				});
+// 				clusterMarkers(map,50, 15);
+// 				global_district = data[0]['district'];
+// 				global_city = data[0]['city'];
+// 			},
+// 			error: function(){
+// 				console.log("ajax1 error")
+// 			} 
+// 		});
+// 	}
 
-	function getNearby(map,lat,lng,classfication){
-		var obj = {"lat":lat,"lng":lng,"class":classfication};
+	function getNearby(map,lat,lng,classfication,range){
+		var obj = {"lat":lat,"lng":lng,"class":classfication, "range": range};
 		$.ajax({     
 			url: "./php/getNearby.php",     
 			type: "GET",
@@ -235,16 +249,17 @@ function addMarker(map,locationName,lat,lng,tele,count){
 					for( var i=0; i<data.length; i++){
 						addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 					}
-					google.maps.event.addListener(map,"dragend",function(){
-						getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
-					});
-					clusterMarkers(map,50, 15);
-				}
-			},
-			error: function(data){
-				console.log("ajax error");
-			} 
-		});
+					// google.maps.event.addListener(map,"dragend",function(){
+					// 	getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
+					// });
+		clusterMarkers(map,50, 15);
+	}
+},
+error: function(data){
+	console.log("ajax error");
+	console.log(data);
+} 
+});
 	}
 
 

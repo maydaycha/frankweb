@@ -5,6 +5,7 @@ header("Content-Type:text/html; charset=utf-8");
 $lat = $_GET["lat"];
 $lng = $_GET["lng"];
 $class = $_GET["class"];
+$range = $_GET["range"];
 
 // $lat = 22.9872290802915;
 // $lng = 120.2192409802915;
@@ -16,13 +17,12 @@ $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
 //取附近20公里的
 //1度 = 111KM,  20km = 0.2度
-$lat_lowbound = $lat-0.03;
-$lat_upbound = $lat+0.03;
-$lng_lowbound = $lng-0.03;
-$lng_upbound = $lng+0.03;
+$lat_lowbound = $lat-$range;
+$lat_upbound = $lat+$range;
+$lng_lowbound = $lng-$range;
+$lng_upbound = $lng+$range;
 
 $db->query("SELECT * FROM $class WHERE (lat BETWEEN '".$lat_lowbound."' AND '".$lat_upbound."') AND (lng BETWEEN '".$lng_lowbound."' AND '".$lng_upbound."') ");
-
 
 $result=array();
 $i = 0;
