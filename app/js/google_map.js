@@ -1,6 +1,6 @@
 
 // -----------Golbal variable-----------
-var map, geocoder,_lat,_lng;
+var map, geocoder,_lat,_lng, last_lat = 25.0366641, last_lng = 121.5499766;
 var marker={},info={}; var taipei = new google.maps.LatLng(25.0366641,121.5499766);
 
 var global_district;
@@ -27,7 +27,6 @@ function initialize(classfication){
 		type="hospital";
 	map.setCenter(taipei);
 	ajaxGetJson(map,25.0366641,121.5499766,type, false);
-	// ajaxGetJson(map,25.0366641,121.5499766,type);
 	getCurrentPosition(true,type);
 
 	/* limit the minimum zoom */
@@ -67,6 +66,8 @@ function getCurrentPosition(init,type){
 		navigator.geolocation.getCurrentPosition(function(position) {
 			_lat=position.coords.latitude;
 			_lng=position.coords.longitude;
+			last_lat = _lat;
+			last_lng = _lng;
 			// 基隆
 			// _lat = 25.128531;
 			// _lng = 121.751905;
@@ -156,7 +157,6 @@ function addMarker(map,locationName,lat,lng,tele,count){
 	};
 
 	function ajaxGetJson(map,lat,lng,classfication, removeCluster){
-		// var classfication = 'hospital';
 		var obj = {"lat":lat,"lng":lng,"class":classfication};
 		$.ajax({     
 			url: "./php/getAddress.php",     
@@ -174,10 +174,13 @@ function addMarker(map,locationName,lat,lng,tele,count){
 
 				google.maps.event.addListener(map,"dragend",function(){
 					console.log("drag: range: " + now_range);
-					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);
+					if(last_lat - map.getCenter().lat() > 0.05 || last_lng - map.getCenter().lng() > 0.05 ){
+						last_lat = map.getCenter().lat();
+						last_lng = map.getCenter().lng();
+						getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);	
+					}
 				});
 				google.maps.event.addListener(map,"zoom_changed",function(){
-					// alert("zoom: "+map.getZoom());
 					switch(map.getZoom()){
 						case 8: now_range = 2; break;
 						case 9: now_range = 1; break;
@@ -203,43 +206,14 @@ function addMarker(map,locationName,lat,lng,tele,count){
 		});
 }
 
-// function ajaxGetJson_1(map,lat,lng,classfication){
-// 		// var classfication = 'hospital';
-// 		var obj = {"lat":lat,"lng":lng,"class":classfication};
-// 		$.ajax({     
-// 			url: "./php/getAddress.php",     
-// 			type: "POST",     
-// 			dataType: "json",
-// 			data: obj,
-// 			success: function(data) {
-// 				for( var i=0; i<data.length; i++){
-// 					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
-// 				}
-// 				google.maps.event.addListener(map,"dragend",function(){
-// 					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, 0.03);
-// 				});
-// 				google.maps.event.addListener(map,"zoom_changed",function(){
-					
-// 					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, 0.1);
-// 				});
-// 				clusterMarkers(map,50, 15);
-// 				global_district = data[0]['district'];
-// 				global_city = data[0]['city'];
-// 			},
-// 			error: function(){
-// 				console.log("ajax1 error")
-// 			} 
-// 		});
-// 	}
-
-	function getNearby(map,lat,lng,classfication,range){
-		var obj = {"lat":lat,"lng":lng,"class":classfication, "range": range};
-		$.ajax({     
-			url: "./php/getNearby.php",     
-			type: "GET",
-			dataType: "json",
-			data: obj,
-			success: function(data) {
+function getNearby(map,lat,lng,classfication,range){
+	var obj = {"lat":lat,"lng":lng,"class":classfication, "range": range};
+	$.ajax({     
+		url: "./php/getNearby.php",     
+		type: "GET",
+		dataType: "json",
+		data: obj,
+		success: function(data) {
 				// handler for when result is empty array
 				if(data.length != 0){
 					global_district = data[0]['district'];
@@ -249,43 +223,40 @@ function addMarker(map,locationName,lat,lng,tele,count){
 					for( var i=0; i<data.length; i++){
 						addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
 					}
-					// google.maps.event.addListener(map,"dragend",function(){
-					// 	getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type);
-					// });
-		clusterMarkers(map,50, 15);
-	}
-},
-error: function(data){
-	console.log("ajax error");
-	console.log(data);
-} 
-});
-	}
+					clusterMarkers(map,50, 15);
+				}
+			},
+			error: function(data){
+				console.log("ajax error");
+				console.log(data);
+			} 
+		});
+}
 
 
-	function removeMarkers(){
-		for(var i=0; i< Object.size(marker); i++)
-			marker[i].setMap(null);
-		marker = [];
-	}
-	function unsetCluster(){
-		markerCluster.clearMarkers();
-	}
-	function clusterMarkers(map,gridsize, zoom){
-		var mcOptions = {gridSize: gridsize, maxZoom: zoom};
-		markerCluster = new MarkerClusterer(map, marker, mcOptions);
-	}
-	function getInitialDistrict(){
-		return global_district;
-	}
-	function getInitialCity(){
-		return global_city;
-	}
-	function getInitialLat(){
-		return _lat;
-	}
-	function getInitialLng(){
-		return _lng;
-	}
+function removeMarkers(){
+	for(var i=0; i< Object.size(marker); i++)
+		marker[i].setMap(null);
+	marker = [];
+}
+function unsetCluster(){
+	markerCluster.clearMarkers();
+}
+function clusterMarkers(map,gridsize, zoom){
+	var mcOptions = {gridSize: gridsize, maxZoom: zoom};
+	markerCluster = new MarkerClusterer(map, marker, mcOptions);
+}
+function getInitialDistrict(){
+	return global_district;
+}
+function getInitialCity(){
+	return global_city;
+}
+function getInitialLat(){
+	return _lat;
+}
+function getInitialLng(){
+	return _lng;
+}
 
 

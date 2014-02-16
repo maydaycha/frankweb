@@ -364,100 +364,41 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   		});
 
   	}
+  	$scope.changeDept = function(departName){
+  		var map = after_select_init();
 
+  		if(departName == "不分科"){
+  			var dataJson = $.param({
+  				"city": $scope.city,
+  				"district": $scope.district,
+  				"classfication": now_classfication,
+  				"depart": "all"
+  			});
+  		}
+  		else{
+  			var dataJson = $.param({
+  				"city" : $scope.city,
+  				"district": $scope.district,
+  				"classfication": now_classfication,
+  				"depart": departName
+  			});
+  		}
+  		console.log("json: " +dataJson);
 
-  	// $("#selectDepart").change(function(){
-  	// 	var map = after_select_init();
-  	// 	console.log("!! city: "+ $scope.city);
-  	// 	console.log("!! district: "+ $scope.district);
-  	// 	console.log("!! class: "+ now_classfication);
-  	// 	console.log("!! depart: "+ $scope.depart.name);
-  	// 	if($scope.depart.name == "不分科"){
-  	// 		var dataJson = $.param({
-  	// 			"city": $scope.city,
-  	// 			"district": $scope.district,
-  	// 			"classfication": now_classfication,
-  	// 			"depart": "all"
-  	// 		});
-  	// 	}
-  	// 	else{
-  	// 		var dataJson = $.param({
-  	// 			"city" : $scope.city,
-  	// 			"district": $scope.district,
-  	// 			"classfication": now_classfication,
-  	// 			"depart": $scope.depart.name
-  	// 		});
+  		$http({
+  			method: "POST",
+  			url: './php/selectLocation.php',
+  			data: dataJson,
+  			headers: {'Content-type': 'application/x-www-form-urlencoded'}
+  		}).success(function(data){	
+  			console.log(data);
+  			if(data[0]==false){
+  				alert("抱歉！找不到您要的選擇，請換地區或是科別");
+  			}
+  			else{
 
-  	// 	}
-  	// 	console.log("json: " +dataJson);
-
-  	// 	$http({
-  	// 		method: "POST",
-  	// 		url: './php/selectLocation.php',
-  	// 		data: dataJson,
-  	// 		headers: {'Content-type': 'application/x-www-form-urlencoded'}
-  	// 	}).success(function(data){	
-  	// 		console.log(data);
-  	// 		if(data[0]==false){
-  	// 			alert("抱歉！找不到您要的選擇，請換地區或是科別");
-  	// 		}
-  	// 		else{
-  		
-  	// 			removeMarkers();
-  	// 			for( var i=0; i<data.length; i++){
-  	// 				// call google_map.js
-  	// 				addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
-  	// 			}
-  	// 			if($scope.afterserchDistrict)
-  	// 				initialLocation = new google.maps.LatLng(data[0]['lat'],data[0]['lng']);
-  	// 			else
-  	// 				initialLocation = new google.maps.LatLng(getInitialLat(),getInitialLng());
-  	// 			console.log("initialLocation: " + initialLocation);
-
-  	// 			map.setCenter(initialLocation);
-  	// 			clusterMarkers(map,50, 15);
-  	// 		}
-  	// 	}).
-  	// 	error(function(){
-  	// 		alert("serchDistrict error");
-  	// 	});
-  	// });
-
-$scope.changeDept = function(departName){
-	var map = after_select_init();
-
-	if(departName == "不分科"){
-		var dataJson = $.param({
-			"city": $scope.city,
-			"district": $scope.district,
-			"classfication": now_classfication,
-			"depart": "all"
-		});
-	}
-	else{
-		var dataJson = $.param({
-			"city" : $scope.city,
-			"district": $scope.district,
-			"classfication": now_classfication,
-			"depart": departName
-		});
-	}
-	console.log("json: " +dataJson);
-
-	$http({
-		method: "POST",
-		url: './php/selectLocation.php',
-		data: dataJson,
-		headers: {'Content-type': 'application/x-www-form-urlencoded'}
-	}).success(function(data){	
-		console.log(data);
-		if(data[0]==false){
-			alert("抱歉！找不到您要的選擇，請換地區或是科別");
-		}
-		else{
-			
-			removeMarkers();
-			for( var i=0; i<data.length; i++){
+  				removeMarkers();
+  				for( var i=0; i<data.length; i++){
   					// call google_map.js
   					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
   				}
@@ -471,40 +412,40 @@ $scope.changeDept = function(departName){
   				clusterMarkers(map,50, 15);
   			}
   		}).
-	error(function(){
-		alert("serchDistrict error");
-	});
-	
-}
+  		error(function(){
+  			alert("serchDistrict error");
+  		});
+
+  	}
 
 
-$scope.searchRequest="";
+  	$scope.searchRequest="";
 
-$(document).keydown(function(event){
-	if(event.keyCode==13){
-		if($scope.searchRequest!=""){
-			search2();
-		}
-	}
+  	$(document).keydown(function(event){
+  		if(event.keyCode==13){
+  			if($scope.searchRequest!=""){
+  				search2();
+  			}
+  		}
 	// event.preventDefault();
 	// alert('You pressed '+event.keyCode);
 });
 
-$scope.list = [];
-function search2(){
-	var pass_lat = getInitialLat(); 
-	var pass_lng = getInitialLng();
+  	$scope.list = [];
+  	function search2(){
+  		var pass_lat = getInitialLat(); 
+  		var pass_lng = getInitialLng();
 
-	$http({
-		method: "POST",
-		url : './php/search.php',
-		data : $.param({"argv" : $scope.searchRequest, "lat" : pass_lat, "lng" : pass_lng }),
-		headers: {'Content-type': 'application/x-www-form-urlencoded'}
-	}).
-	success(function(data){
-		$("#section_for_googlemap").css("display","block");
-		$("#section_for_article").css("display","none");
-		$("#resultCount").css("display","block");
+  		$http({
+  			method: "POST",
+  			url : './php/search.php',
+  			data : $.param({"argv" : $scope.searchRequest, "lat" : pass_lat, "lng" : pass_lng }),
+  			headers: {'Content-type': 'application/x-www-form-urlencoded'}
+  		}).
+  		success(function(data){
+  			$("#section_for_googlemap").css("display","block");
+  			$("#section_for_article").css("display","none");
+  			$("#resultCount").css("display","block");
 		// $("#left_block").css("visibility","hidden");
 		// $("#fourArticle").css("display",'none');
 		$("#section_for_hospitalList").css("display",'block');
@@ -517,12 +458,12 @@ function search2(){
 		}
 		$scope.count = $scope.list.length;
 	}).
-	error(function(){
-		alert("search error!");
-	});
-}
+  		error(function(){
+  			alert("search error!");
+  		});
+  	}
 
-$scope.search1 = function(){
+  	$scope.search1 = function(){
 	// alert("in search1");
 	var pass_lat = getInitialLat(); 
 	var pass_lng = getInitialLng();
@@ -538,10 +479,7 @@ $scope.search1 = function(){
 			headers: {'Content-type': 'application/x-www-form-urlencoded'}
 		}).
 		success(function(data){
-			// $("#section_for_googlemap").css("display","block");
 			$("#section_for_article").css("display","none");
-			// $("#left_block").css("visibility","hidden");
-			// $("#fourArticle").css("display",'none');
 			$("#section_for_hospitalList").css("display",'block');
 			$("#searchList").css("display",'block');
 			$("#resultCount").css("display","block");
@@ -658,16 +596,11 @@ window.onbeforeunload = navigate_to_mp;
 }]).
 controller('MyCtrl2', ['$scope','$http','$window',function($scope,$http,$window) {
 
-	// $("#section_for_googlemap").css("display","none");
-	// // $("#section_for_hospitalList").css("display","none");
-	// $("#section_for_article").css("display","block");
-	// $("#left_block").css("visibility","hidden");
 	$http({
 		method: "POST",
 		url: "./php/getArticle.php"
 	}).
 	success(function(data){
-		// alert("getArticle success");
 		console.log("article");
 		console.log(data);
 		console.log(data.length);
@@ -714,14 +647,5 @@ controller('MyCtrl2', ['$scope','$http','$window',function($scope,$http,$window)
 
 }]).
 controller('MyCtrl3', ['$scope','$http','$window',function($scope,$http,$window) {
-
-	// $("#section_for_googlemap").css("display","none");
-	// // $("#section_for_hospitalList").css("display","block");
-	// $("#section_for_article").css("display","none");
-	// $("#left_block").css("visibility","hidden");
-
-
-
-
 
 }]);

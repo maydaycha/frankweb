@@ -15,8 +15,7 @@ $range = $_GET["range"];
 
 $db = new DB();
 $db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-//取附近20公里的
-//1度 = 111KM,  20km = 0.2度
+
 $lat_lowbound = $lat-$range;
 $lat_upbound = $lat+$range;
 $lng_lowbound = $lng-$range;
