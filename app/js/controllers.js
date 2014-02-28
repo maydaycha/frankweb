@@ -332,8 +332,6 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   			data: dataJson,
   			headers: {'Content-type': 'application/x-www-form-urlencoded'}
   		}).success(function(data){	
-  			console.log("~~");
-  			console.log(data);
   			if(data[0]==false){
   				alert("抱歉！找不到您要的選擇，請換地區或是科別");
   			}
@@ -349,7 +347,7 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
   				{
   					console.log(map.getCenter().lat());
   					console.log(map.getCenter().lng());
-  					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), type);
+  					ajaxGetJson(map, map.getCenter().lat(), map.getCenter().lng(), now_classfication, true);
 
   				});
   				
@@ -588,9 +586,6 @@ function closeIt()
 }
 
 window.onbeforeunload = navigate_to_mp;
-
-
-
 
 
 }]).

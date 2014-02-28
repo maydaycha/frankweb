@@ -26,6 +26,7 @@ function initialize(classfication){
 	else
 		type="hospital";
 	map.setCenter(taipei);
+	alert("init");
 	ajaxGetJson(map,25.0366641,121.5499766,type, false);
 	getCurrentPosition(true,type);
 
@@ -201,7 +202,6 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			},
 			error: function(data){
 				console.log("ajax error");
-				console.log(data);
 			} 
 		});
 }
@@ -234,28 +234,29 @@ function getNearby(map,lat,lng,classfication,range){
 }
 
 
-function removeMarkers(){
+function removeMarkers() {
 	for(var i=0; i< Object.size(marker); i++)
 		marker[i].setMap(null);
 	marker = [];
 }
-function unsetCluster(){
+function unsetCluster() {
 	markerCluster.clearMarkers();
 }
-function clusterMarkers(map,gridsize, zoom){
+function clusterMarkers(map,gridsize, zoom) {
+	zoom = 20;
 	var mcOptions = {gridSize: gridsize, maxZoom: zoom};
 	markerCluster = new MarkerClusterer(map, marker, mcOptions);
 }
-function getInitialDistrict(){
+function getInitialDistrict() {
 	return global_district;
 }
-function getInitialCity(){
+function getInitialCity() {
 	return global_city;
 }
-function getInitialLat(){
+function getInitialLat() {
 	return _lat;
 }
-function getInitialLng(){
+function getInitialLng() {
 	return _lng;
 }
 
