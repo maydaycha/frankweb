@@ -30,103 +30,103 @@ controller('MyCtrl1', ['$scope','$http','$window',function($scope,$http,$window)
 	// 基隆市
 	$http.get('data/jilong.json').success(function(data){
 		$scope.jilongshis = data;
-		console.log("jilong~");
-		console.log($scope.jilongshis);
+		//console.log("jilong~");
+		//console.log($scope.jilongshis);
 	})
 	//台北市
 	$http.get('data/taibeishi.json').success(function(data){
 		$scope.taipeishis = data;
-		console.log($scope.taipeishis);
+		//console.log($scope.taipeishis);
 	});
 	//新北市
 	$http.get('data/xinbeishi.json').success(function(data){
 		$scope.xinbeishis = data;
-		console.log($scope.xinbeishis);
+		//console.log($scope.xinbeishis);
 	});
 	// 桃園縣
 	$http.get('data/taoyuan.json').success(function(data){
 		$scope.taoyuans = data;
-		console.log($scope.taoyuans);
+		//console.log($scope.taoyuans);
 	});
 	// 新竹縣
 	$http.get('data/xinzhuxian.json').success(function(data){
 		$scope.xinzhuxians = data;
-		console.log($scope.xinzhuxians);
+		//console.log($scope.xinzhuxians);
 	});
 	// 新竹市
 	$http.get('data/xinzhushi.json').success(function(data){
 		$scope.xinzhushis = data;
-		console.log($scope.xinzhushis);
+		//console.log($scope.xinzhushis);
 	});
 	// 苗栗縣
 	$http.get('data/miaoli.json').success(function(data){
 		$scope.miaolis = data;
-		console.log($scope.miaolis);
+		//console.log($scope.miaolis);
 	});
 	// 台中市
 	$http.get('data/taizhongshi.json').success(function(data){
 		$scope.taizhongshis = data;
-		console.log($scope.taizhongshis);
+		//console.log($scope.taizhongshis);
 	});
 	// 彰化縣
 	$http.get('data/zhanghua.json').success(function(data){
 		$scope.zhanghuas = data;
-		console.log($scope.zhanghuas);
+		//console.log($scope.zhanghuas);
 	});
 	// 雲林縣
 	$http.get('data/yunlin.json').success(function(data){
 		$scope.yunlins = data;
-		console.log($scope.yunlins);
+		//console.log($scope.yunlins);
 	});
 	// 嘉義縣
 	$http.get('data/jiayi.json').success(function(data){
 		$scope.jiayis = data;
-		console.log($scope.jiayis);
+		//console.log($scope.jiayis);
 	});
 	// 台南市
 	$http.get('data/tainan.json').success(function(data){
 		$scope.tainans = data;
-		console.log($scope.tainans);
+		//console.log($scope.tainans);
 	});
 	// 高雄市
 	$http.get('data/gaoxiong.json').success(function(data){
 		$scope.gaoxiongs = data;
-		console.log($scope.gaoxiongs);
+		//console.log($scope.gaoxiongs);
 	});
 	// 屏東縣
 	$http.get('data/pingdong.json').success(function(data){
 		$scope.pingdongs = data;
-		console.log($scope.pingdongs);
+		//console.log($scope.pingdongs);
 	});
 	// 宜蘭縣
 	$http.get('data/yilan.json').success(function(data){
 		$scope.yilans = data;
-		console.log($scope.yilans);
+		//console.log($scope.yilans);
 	});
 	// 花蓮縣
 	$http.get('data/hualian.json').success(function(data){
 		$scope.hualians = data;
-		console.log($scope.hualians);
+		//console.log($scope.hualians);
 	});
 	// 臺東縣
 	$http.get('data/taidong.json').success(function(data){
 		$scope.taidongs = data;
-		console.log($scope.taidongs);
+		//console.log($scope.taidongs);
 	});
 	// 澎湖縣
 	$http.get('data/penghu.json').success(function(data){
 		$scope.penghus = data;
-		console.log($scope.penghus);
+		//console.log($scope.penghus);
 	});
 	// 金門縣
 	$http.get('data/jinmen.json').success(function(data){
 		$scope.jinmens = data;
-		console.log($scope.jinmens);
+		//console.log($scope.jinmens);
 	});
 	// 連江縣
 	$http.get('data/lianjiang.json').success(function(data){
 		$scope.lianjiangs = data;
-		console.log($scope.lianjiangs);
+		//console.log($scope.lianjiangs);
 	});
 
 	$http({

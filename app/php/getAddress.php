@@ -3,8 +3,9 @@ require_once "dbConnect.php";
 header("Content-Type:text/html; charset=utf-8");
 $lat = $_POST["lat"];
 $lng = $_POST["lng"];
-// $lat = 22.9872290802915;
-// $lng = 120.2192409802915;
+// $lat = 25.047908;
+// $lng = 121.517315;
+// 25.047908,121.517315
 
 $class = $_POST["class"];
 // $class = 'clinic';

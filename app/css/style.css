@@ -176,6 +176,7 @@
 	/*top:0px;*/
 	bottom: 20px;
 	left: 150px;
+	/*top:-3px;*/
 	/*right:50px;*/
 	width:80%;
 	list-style-type: none;
@@ -229,6 +230,7 @@
 	width: 200px;
 	padding-bottom: 50px;
 	overflow: hidden;
+	margin-right: 20px; 
 }
 
 .background.main {
@@ -362,18 +364,13 @@
 
 	.selectDepart{
 		position:relative;
-		/*left:20px; */
 		right: 40px;
-		/*border: 1px solid;*/
-		/*top:5px;*/
-		/*width:200px;*/
-		/*display: none;*/
 	}
 	.selectDepart ul{
-		/*border: 1px solid;*/
 		list-style-type: none;
 		float: left;
 		position: relative;
+		top: -3px;
 		left: 15px;
 		width: 60px;
 

@@ -9,7 +9,6 @@ $range = $_GET["range"];
 // $lat = 22.9872290802915;
 // $lng = 120.2192409802915;
 
-// $class = 'clinic';
 // $class = 'hospital';
 // $range = 0.5;
 
@@ -18,8 +17,8 @@ $lat_upbound = $lat+$range;
 $lng_lowbound = $lng-$range;
 $lng_upbound = $lng+$range;
 
-$query = "SELECT * FROM $class WHERE (lat BETWEEN '".$lat_lowbound."' AND '".$lat_upbound."') AND (lng BETWEEN '".$lng_lowbound."' AND '".$lng_upbound."') LIMIT 1000 ";
-// echo $query;
+$query = "SELECT * FROM $class WHERE (lat BETWEEN '".$lat_lowbound."' AND '".$lat_upbound."') AND (lng BETWEEN '".$lng_lowbound."' AND '".$lng_upbound."') LIMIT 2000 ";
+// $query = "SELECT * FROM $class WHERE (lat BETWEEN '".$lat_lowbound."' AND '".$lat_upbound."') AND (lng BETWEEN '".$lng_lowbound."' AND '".$lng_upbound."')";
 $result = mysqli_query($dbc, $query);
 $result_array = array();
 while ($main = mysqli_fetch_array($result, MYSQL_ASSOC)) {

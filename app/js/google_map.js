@@ -6,7 +6,8 @@ var marker={},info={}; var taipei = new google.maps.LatLng(25.0366641,121.549976
 var global_district;
 var markerCluster;
 var isfirst = true;
-var minZoomLevel = 5;
+var minZoomLevel = 10;
+var maxZoomLevel = 15;
 var now_range = 0.05;
 // -----------Golbal variable-----------
 // $(document).ready(function() { initialize('hospital'); });
@@ -18,7 +19,8 @@ function initialize(classfication){
 	geocoder = new google.maps.Geocoder();  
 	var mapOptions = {
 		zoom: 13,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		maxZoom: 15
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
 	if(classfication=="clinic")
@@ -26,14 +28,16 @@ function initialize(classfication){
 	else
 		type="hospital";
 	map.setCenter(taipei);
-	alert("init");
-	ajaxGetJson(map,25.0366641,121.5499766,type, false);
-	getCurrentPosition(true,type);
+
+	ajaxGetJson(map,25.0366641,121.5499766, type, false);
+	getCurrentPosition(true, type);
 
 	/* limit the minimum zoom */
 	google.maps.event.addListener(map, 'zoom_changed', function(){
 		if(map.getZoom() < minZoomLevel)
 			map.setZoom(minZoomLevel);
+		if(map.getZoom() > maxZoomLevel)
+			map.setZoom(maxZoomLevel);
 
 
 	});
@@ -47,7 +51,8 @@ function after_select_init(){
 	var mapOptions = {
 		//center: latlng, 
 		zoom: 12,
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		maxZoom: 15
 	};
 	map = new google.maps.Map(document.getElementById("section_for_googlemap"),mapOptions);
 
@@ -55,6 +60,8 @@ function after_select_init(){
 	google.maps.event.addListener(map, 'zoom_changed', function(){
 		if(map.getZoom() < minZoomLevel)
 			map.setZoom(minZoomLevel);
+		if(map.getZoom() > maxZoomLevel)
+			map.setZoom(maxZoomLevel);
 	});
 
 	return map;
@@ -165,6 +172,7 @@ function addMarker(map,locationName,lat,lng,tele,count){
 			dataType: "json",
 			data: obj,
 			success: function(data) {
+				console.log(data);
 				if(removeCluster){
 					removeMarkers();
 					unsetCluster();
@@ -175,13 +183,21 @@ function addMarker(map,locationName,lat,lng,tele,count){
 
 				google.maps.event.addListener(map,"dragend",function(){
 					console.log("drag: range: " + now_range);
-					if(last_lat - map.getCenter().lat() > 0.05 || last_lng - map.getCenter().lng() > 0.05 ){
+					console.log("last lat : " + last_lat);
+					console.log("map.getCenter().lat() : " + map.getCenter().lat());
+					console.log(Math.abs(last_lat - map.getCenter().lat()));
+					if(Math.abs(last_lat - map.getCenter().lat()) > 0.05 || Math.abs(last_lng - map.getCenter().lng()) > 0.05 ){
+						// console.log("call Nearby");
 						last_lat = map.getCenter().lat();
 						last_lng = map.getCenter().lng();
 						getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);	
 					}
 				});
-				google.maps.event.addListener(map,"zoom_changed",function(){
+				google.maps.event.addListener(map, "zoom_changed", function(){
+					console.log("now zoom: "+map.getZoom());
+					if(map.getZoom() <= minZoomLevel)
+						return;
+					// alert("got Nearby");
 					switch(map.getZoom()){
 						case 8: now_range = 2; break;
 						case 9: now_range = 1; break;
@@ -206,8 +222,9 @@ function addMarker(map,locationName,lat,lng,tele,count){
 		});
 }
 
-function getNearby(map,lat,lng,classfication,range){
+function getNearby(map, lat, lng, classfication, range){
 	var obj = {"lat":lat,"lng":lng,"class":classfication, "range": range};
+	console.log(obj);
 	$.ajax({     
 		url: "./php/getNearby.php",     
 		type: "GET",

@@ -1,18 +1,12 @@
 <?php
-require_once("DB_config.php");
-require_once("DB_class.php");
+require_once "dbConnect.php";
 header("Content-Type:text/html; charset=utf-8");
 
-$db = new DB();
-$db->connect_db($_DB['host'], $_DB['username'], $_DB['password'], $_DB['dbname']);
-$query ="SELECT * FROM article ORDER BY num DESC";
-$db->query($query);
-
-$result = array();
-$i = 0;
-while($result[$i++] = $db->fetch_array());
-echo json_encode($result);	
-
-
-
+$query = "SELECT * FROM article ORDER BY num DESC";
+$result_array = array();
+$result = mysqli_query($dbc, $query);
+while ($main = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+	array_push($result_array, $main);
+}
+echo json_encode($result_array);	
 ?>
