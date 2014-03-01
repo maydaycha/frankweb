@@ -86,7 +86,7 @@ function getCurrentPosition(init,type){
 			console.log("initial lat: " +_lat);
 			console.log("initial lng: " +_lng);
 			if(init)
-				ajaxGetJson(map,_lat,_lng,type, true);
+				ajaxGetJson(map,_lat,_lng,type, false);
 		}, function() {
 			console.log("%s",browserSupportFlag);
 			handleNoGeolocation(browserSupportFlag);

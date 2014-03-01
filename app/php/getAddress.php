@@ -36,8 +36,8 @@ while ($main = mysqli_fetch_array($result, MYSQL_ASSOC)){
 	array_push($result_array, $main);
 }
 
- echo json_encode($result_array,JSON_UNESCAPED_UNICODE);	
-// echo json_encode($result);	
+// echo json_encode($result_array,JSON_UNESCAPED_UNICODE);	
+echo json_encode($result_array);	
 
 
 ?>
