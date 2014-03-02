@@ -5,7 +5,6 @@ $lat = $_POST["lat"];
 $lng = $_POST["lng"];
 // $lat = 25.047908;
 // $lng = 121.517315;
-// 25.047908,121.517315
 
 $class = $_POST["class"];
 // $class = 'clinic';

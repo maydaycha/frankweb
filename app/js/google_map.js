@@ -261,7 +261,7 @@ function unsetCluster() {
 }
 function clusterMarkers(map,gridsize, zoom) {
 	zoom = 20;
-	var mcOptions = {gridSize: gridsize, maxZoom: zoom};
+	var mcOptions = {gridSize: gridsize, maxZoom: zoom, zoomOnClick: false};
 	markerCluster = new MarkerClusterer(map, marker, mcOptions);
 }
 function getInitialDistrict() {
