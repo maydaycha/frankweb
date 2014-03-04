@@ -118,7 +118,7 @@ function getCurrentPosition(init,type){
 }
 
 
-function addMarker(map,locationName,lat,lng,tele,count){
+function addMarker(map, locationName, lat, lng, tele, count){
 	var after_drag = false;
 	var latlng = new google.maps.LatLng(lat,lng);
 	marker[count] = new google.maps.Marker({
@@ -129,74 +129,74 @@ function addMarker(map,locationName,lat,lng,tele,count){
 	// 新增InfoWindow
 	var infowindow = new google.maps.InfoWindow(); 
 	info[count] = infowindow;
-	//InfoWindow的內容，可用Html語法
+	/*InfoWindow的內容，可用Html語法*/
 	infowindow.setContent("名稱："+locationName+"</br>"+"電話："+tele);
 
-		// 在Marker click時，顯示InfoWindow：
-		google.maps.event.addListener(marker[count], 'click', function() {
+	/*在Marker click時，顯示InfoWindow：*/
+	google.maps.event.addListener(marker[count], 'click', function() {
 			//先清除其他marker
 			for(var i=0; i<Object.size(marker); i++)
 				info[i].close();
 			//open
 			infowindow.open(map, marker[count]);
 		});
-		google.maps.event.addListener(marker[count],"mouseover",function()
-		{
-			for(var i=0; i<Object.size(marker); i++)
-				info[i].close();
+	google.maps.event.addListener(marker[count],"mouseover",function()
+	{
+		for(var i=0; i<Object.size(marker); i++)
+			info[i].close();
 			//open
 			infowindow.open(map, marker[count]);
 		});
 
-		google.maps.event.addListener(marker[count],"mouseout",function()
-		{
-			for(var i=0; i<Object.size(marker); i++)
-				info[i].close();
-		});
+	google.maps.event.addListener(marker[count],"mouseout",function()
+	{
+		for(var i=0; i<Object.size(marker); i++)
+			info[i].close();
+	});
+}
+
+
+Object.size = function(obj) {
+	var size = 0, key;
+	for (key in obj) {
+		if (obj.hasOwnProperty(key)) size++;
 	}
+	return size;
+};
 
+function ajaxGetJson(map,lat,lng,classfication, removeCluster){
+	var obj = {"lat":lat,"lng":lng,"class":classfication};
+	$.ajax({     
+		url: "./php/getAddress.php",     
+		type: "POST",     
+		dataType: "json",
+		data: obj,
+		success: function(data) {
+			console.log(data);
+			if(removeCluster){
+				removeMarkers();
+				unsetCluster();
+			}
+			for( var i=0; i<data.length; i++){
+				addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
+			}
 
-	Object.size = function(obj) {
-		var size = 0, key;
-		for (key in obj) {
-			if (obj.hasOwnProperty(key)) size++;
-		}
-		return size;
-	};
-
-	function ajaxGetJson(map,lat,lng,classfication, removeCluster){
-		var obj = {"lat":lat,"lng":lng,"class":classfication};
-		$.ajax({     
-			url: "./php/getAddress.php",     
-			type: "POST",     
-			dataType: "json",
-			data: obj,
-			success: function(data) {
-				console.log(data);
-				if(removeCluster){
-					removeMarkers();
-					unsetCluster();
-				}
-				for( var i=0; i<data.length; i++){
-					addMarker(map,data[i]['name'],data[i]['lat'],data[i]['lng'],data[i]['tele'],i);
-				}
-
-				google.maps.event.addListener(map,"dragend",function(){
-					console.log("drag: range: " + now_range);
-					console.log("last lat : " + last_lat);
-					console.log("map.getCenter().lat() : " + map.getCenter().lat());
-					console.log(Math.abs(last_lat - map.getCenter().lat()));
-					if(Math.abs(last_lat - map.getCenter().lat()) > 0.05 || Math.abs(last_lng - map.getCenter().lng()) > 0.05 ){
+			google.maps.event.addListener(map,"dragend",function(){
+				console.log("drag: range: " + now_range);
+				console.log("last lat : " + last_lat);
+				console.log("map.getCenter().lat() : " + map.getCenter().lat());
+				console.log(Math.abs(last_lat - map.getCenter().lat()));
+				if(Math.abs(last_lat - map.getCenter().lat()) > 0.05 || Math.abs(last_lng - map.getCenter().lng()) > 0.05 ){
 						// console.log("call Nearby");
 						last_lat = map.getCenter().lat();
 						last_lng = map.getCenter().lng();
 						getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);	
 					}
 				});
-				google.maps.event.addListener(map, "zoom_changed", function(){
-					console.log("now zoom: "+map.getZoom());
-					if(map.getZoom() <= minZoomLevel)
-						return;
+			google.maps.event.addListener(map, "zoom_changed", function(){
+				console.log("now zoom: "+map.getZoom());
+				if(map.getZoom() <= minZoomLevel)
+					return;
 					// alert("got Nearby");
 					switch(map.getZoom()){
 						case 8: now_range = 2; break;
@@ -210,16 +210,16 @@ function addMarker(map,locationName,lat,lng,tele,count){
 					console.log("now_range :" +now_range);
 					getNearby(map, map.getCenter().lat(), map.getCenter().lng(), type, now_range);
 				});
-				clusterMarkers(map,50, 15);
-				global_district = data[0]['district'];
-				global_city = data[0]['city'];
-				console.log("initial~ district: " + global_district);
-				console.log("initial~ city: " + global_city);
-			},
-			error: function(data){
-				console.log("ajax error");
-			} 
-		});
+			clusterMarkers(map,50, 15);
+			global_district = data[0]['district'];
+			global_city = data[0]['city'];
+			console.log("initial~ district: " + global_district);
+			console.log("initial~ city: " + global_city);
+		},
+		error: function(data){
+			console.log("ajax error");
+		} 
+	});
 }
 
 function getNearby(map, lat, lng, classfication, range){

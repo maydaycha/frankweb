@@ -27,7 +27,8 @@ for($j=0;$j<count($jsondecode->results[0]->address_components);$j++){
 	}
 }
 
-$query = "SELECT * FROM $class WHERE city = '$city' AND district = '$district'";
+// $query = "SELECT * FROM $class WHERE city = '$city' AND district = '$district'";
+$query = "SELECT lat, lng FROM $class WHERE city = '$city' AND district = '$district'";
 $result_array = array();
 $result = mysqli_query($dbc, $query) or die("Error: query error");
 while ($main = mysqli_fetch_array($result, MYSQL_ASSOC)){
