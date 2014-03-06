@@ -3,7 +3,7 @@
 <head>
     <title>Frank's Web</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" />  
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/webflow.css"> -->
     <link rel="stylesheet" type="text/css" href="css/maydaycha.webflow.css">
@@ -59,7 +59,7 @@
                         <p><button id="taoyuan-button" class="select-location" ng-click="location_display('taoyuan')">桃園縣</button></p>
 
                         <p><button id="xinzhuxian-button" class="select-location" ng-click="location_display('xinzhuxian')">新竹縣</button></p>
-                        
+
                         <p><button id="xinzhushi-button" class="select-location" ng-click="location_display('xinzhushi')">新竹市</button></p>
 
                         <p><button id="miaoli-button" class="select-location" ng-click="location_display('miaoli')">苗栗縣</button></p>
@@ -83,14 +83,14 @@
                         <p><button id="hualian-button" class="select-location" ng-click="location_display('hualian')">花蓮縣</button></p>
 
                         <p><button id="taidong-button" class="select-location" ng-click="location_display('taidong')">臺東縣</button></p>
-                        
+
                         <p><button id="penghu-button" class="select-location" ng-click="location_display('penghu')">澎湖縣</button></p>
-                        
+
                         <p><button id="jinmen-button" class="select-location" ng-click="location_display('jinmen')">金門縣</button></p>
 
                         <p><button id="lianjiang-button" class="select-location" ng-click="location_display('lianjiang')">連江縣</button></p>
 
-                    </div> 
+                    </div>
                     <div class="tab_container" id="tab_container2">
                         <ul id="jilong" class="location-ul" >
                             <p id="button0">基隆市 <button ng-click="return_to_city()">x</button></p>
@@ -197,12 +197,12 @@
                                 </li>
                             </ul>
                             <ul id="jinmen" class="location-ul">
-                                <p id="button18">金門縣 <button ng-click="return_to_city()">x</button></p>  
+                                <p id="button18">金門縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="jinmen in jinmens" id="{{jinmen.english}}" ng-click="serchDistrict('{{jinmen.english}}','17','金門縣')"><button style="background:none; border:0;">{{jinmen.chinese}}</button>
                                 </li>
                             </ul>
                             <ul id="lianjiang" class="location-ul">
-                                <p id="button19">連江縣 <button ng-click="return_to_city()">x</button></p>     
+                                <p id="button19">連江縣 <button ng-click="return_to_city()">x</button></p>
                                 <li ng-repeat="lianjiang in lianjiangs" id="{{lianjiang.english}}" ng-click="serchDistrict('{{lianjiang.english}}','18','連江縣')">
                                     <button style="background:none; border:0;">{{lianjiang.chinese}}</button>
                                 </li>
@@ -217,17 +217,17 @@
                     </div>
                 </div> -->
                 <div class="left_block_content2">
-                    <p>篩選條件</p> 
+                    <p>篩選條件</p>
                     <div class="selectDepart" id="selectDepart" ng-model="depart">
                         <ul >
                             <li id="menu">科別 》
                                 <ul>
-                                    <li><a href="" ng-click="changeDept('不分科')">不分科</a></li>      
-                                    <li><a href="" ng-click="changeDept('眼科')">眼科</a></li>      
-                                    <li><a href="" ng-click="changeDept('耳鼻喉科')">耳鼻喉科</a></li>      
-                                    <li><a href="" ng-click="changeDept('小兒科')">小兒科</a></li>      
-                                    <li><a href="" ng-click="changeDept('婦產科')">婦產科</a></li>      
-                                    <li><a href="" ng-click="changeDept('復健科')">復健科</a></li>      
+                                    <li><a href="" ng-click="changeDept('不分科')">不分科</a></li>
+                                    <li><a href="" ng-click="changeDept('眼科')">眼科</a></li>
+                                    <li><a href="" ng-click="changeDept('耳鼻喉科')">耳鼻喉科</a></li>
+                                    <li><a href="" ng-click="changeDept('小兒科')">小兒科</a></li>
+                                    <li><a href="" ng-click="changeDept('婦產科')">婦產科</a></li>
+                                    <li><a href="" ng-click="changeDept('復健科')">復健科</a></li>
                                 </ul>
                             </li>
                         </ul>
